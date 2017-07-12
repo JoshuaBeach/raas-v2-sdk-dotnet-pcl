@@ -13,12 +13,12 @@ namespace TangoCard.Raas.Utilities
         public static async Task RetryOnExceptionAsync<TException>(
             int times, TimeSpan delay, Func<Task> operation) where TException : Exception
         {
-            ExceptionDispatchInfo capturedException;
             if (times < 0)
                 throw new ArgumentOutOfRangeException();
             var attempts = -1;
             do
             {
+                TException capturedException;
                 try
                 {
                     attempts++;
@@ -27,7 +27,7 @@ namespace TangoCard.Raas.Utilities
                 }
                 catch (TException ex)
                 {
-                    capturedException = ExceptionDispatchInfo.Capture(ex);;
+                    capturedException = ex;
                 }
 
                 if (attempts == times)
