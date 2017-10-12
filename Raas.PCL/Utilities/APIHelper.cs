@@ -16,7 +16,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using unirest_net.request;
 
 namespace TangoCard.Raas.Utilities
 {
@@ -312,7 +311,7 @@ namespace TangoCard.Raas.Utilities
             }
             else if (value is Enum)
             {
-#if WINDOWS_UWP
+#if WINDOWS_UWP || NETSTANDARD1_3
                 Assembly thisAssembly = typeof(APIHelper).GetTypeInfo().Assembly;
 #else
                 Assembly thisAssembly = Assembly.GetExecutingAssembly();
@@ -324,7 +323,11 @@ namespace TangoCard.Raas.Utilities
                 if (enumHelperType != null)
                 {
                     //this enum has an associated helper, use that to load the value
-                    MethodInfo enumHelperMethod = enumHelperType.GetMethod("ToValue", new[] {value.GetType()});
+#if NETSTANDARD1_3
+                    MethodInfo enumHelperMethod = enumHelperType.GetRuntimeMethod("ToValue", new[] { value.GetType() });
+#else
+                    MethodInfo enumHelperMethod = enumHelperType.GetMethod("ToValue", new[] { value.GetType() });
+#endif
                     if (enumHelperMethod != null)
                         enumValue = enumHelperMethod.Invoke(null, new object[] {value});
                 }
@@ -345,7 +348,11 @@ namespace TangoCard.Raas.Utilities
             else if (!(value.GetType().Namespace.StartsWith("System")))
             {
                 //Custom object Iterate through its properties
-                var enumerator = value.GetType().GetProperties().GetEnumerator();
+#if NETSTANDARD1_3
+                var enumerator = value.GetType().GetRuntimeProperties().GetEnumerator();
+#else
+                var enumerator = value.GetType().GetProperties().GetEnumerator();;
+#endif
                 PropertyInfo pInfo = null;
                 var t = new JsonPropertyAttribute().GetType();
                 while (enumerator.MoveNext())
@@ -362,7 +369,11 @@ namespace TangoCard.Raas.Utilities
             else if (value is DateTime)
             {
                 string convertedValue = null;
+#if NETSTANDARD1_3
+                IEnumerable<Attribute> pInfo = null;
+#else
                 object[] pInfo = null;
+#endif
                 if(propInfo!=null)
                     pInfo = propInfo.GetCustomAttributes(true);
                 if (pInfo != null)

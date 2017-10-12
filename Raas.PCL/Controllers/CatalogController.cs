@@ -18,7 +18,6 @@ using TangoCard.Raas.Http.Request;
 using TangoCard.Raas.Http.Response;
 using TangoCard.Raas.Http.Client;
 using TangoCard.Raas.Exceptions;
-using TangoCard.Raas.Models;
 
 namespace TangoCard.Raas.Controllers
 {

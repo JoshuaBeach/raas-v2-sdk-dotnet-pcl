@@ -14,11 +14,11 @@ namespace TangoCard.Raas.Utilities
             int times, TimeSpan delay, Func<Task> operation) where TException : Exception
         {
             if (times < 0)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(times));
+
             var attempts = -1;
             do
             {
-                TException capturedException;
                 try
                 {
                     attempts++;
@@ -27,17 +27,14 @@ namespace TangoCard.Raas.Utilities
                 }
                 catch (TException ex)
                 {
-                    capturedException = ex;
-                }
-
-                if (attempts == times)
-                    throw capturedException;
-#if WINDOWS_UWP
-                await Task.Delay(delay).ConfigureAwait(false);
+                    if (attempts == times)
+                        throw;
+#if WINDOWS_UWP || DNXCORE50 || NETSTANDARD1_3
+                    await Task.Delay(delay).ConfigureAwait(false);
 #else
-                await TaskEx.Delay(delay).ConfigureAwait(false);
+                    await TaskEx.Delay(delay).ConfigureAwait(false);
 #endif
-
+                }
             } while (true);
         }
     }

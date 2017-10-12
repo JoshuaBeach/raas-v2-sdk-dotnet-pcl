@@ -18,7 +18,6 @@ using TangoCard.Raas.Http.Request;
 using TangoCard.Raas.Http.Response;
 using TangoCard.Raas.Http.Client;
 using TangoCard.Raas.Exceptions;
-using TangoCard.Raas.Models;
 
 namespace TangoCard.Raas.Controllers
 {
@@ -53,18 +52,19 @@ namespace TangoCard.Raas.Controllers
         /// <summary>
         /// Retrieve current exchange rates
         /// </summary>
-        /// <return>Returns the void response from the API call</return>
-        public void GetExchangeRates()
+        /// <return>Returns the Models.ExchangeRateResponseModel response from the API call</return>
+        public Models.ExchangeRateResponseModel GetExchangeRates()
         {
-            Task t = GetExchangeRatesAsync();
+            Task<Models.ExchangeRateResponseModel> t = GetExchangeRatesAsync();
             APIHelper.RunTaskSynchronously(t);
+            return t.Result;
         }
 
         /// <summary>
         /// Retrieve current exchange rates
         /// </summary>
-        /// <return>Returns the void response from the API call</return>
-        public async Task GetExchangeRatesAsync()
+        /// <return>Returns the Models.ExchangeRateResponseModel response from the API call</return>
+        public async Task<Models.ExchangeRateResponseModel> GetExchangeRatesAsync()
         {
             //the base uri for api requests
             string _baseUri = Configuration.GetBaseURI();
@@ -80,7 +80,8 @@ namespace TangoCard.Raas.Controllers
             //append request with appropriate headers and parameters
             var _headers = new Dictionary<string,string>()
             {
-                { "user-agent", "TangoCardv2NGSDK" }
+                { "user-agent", "TangoCardv2NGSDK" },
+                { "accept", "application/json" }
             };
 
             //prepare the API call request to fetch the response
@@ -92,6 +93,14 @@ namespace TangoCard.Raas.Controllers
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
 
+            try
+            {
+                return APIHelper.JsonDeserialize<Models.ExchangeRateResponseModel>(_response.Body);
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
         }
 
     }

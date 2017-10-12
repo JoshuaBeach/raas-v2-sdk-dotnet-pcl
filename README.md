@@ -2,15 +2,9 @@
 
 With this RESTful API you can integrate a global reward or incentive program into your app or platform. If you have any questions or if you'd like to receive your own credentials, please contact us at devsupport@tangocard.com.
 
-## How to Use
-You can add this SDK to your project via NuGet
-```Install-Package TangoCard.Raas```
-
 ## How to Build
 
-The generated code uses a few NuGet Packages e.g., Newtonsoft.Json, UniRest,
-and Microsoft Base Class Library. The reference to these packages is already
-added as in the packages.config file. If the automatic NuGet package restore
+The generated code uses the Newtonsoft Json.NET NuGet Package. If the automatic NuGet package restore
 is enabled, these dependencies will be installed automatically. Therefore,
 you will need internet access for build.
 
@@ -88,126 +82,19 @@ string platformKey = "apYPfT6HNONpDRUj3CLGWYt7gvIHONpDRUYPfT6Hj"; // RaaS v2 API
 RaasClient client = new RaasClient(platformName, platformKey);
 ```
 
+
+
 # Class Reference
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
-* [AccountsController](#accounts_controller)
 * [OrdersController](#orders_controller)
+* [AccountsController](#accounts_controller)
 * [CatalogController](#catalog_controller)
 * [ExchangeRatesController](#exchange_rates_controller)
 * [StatusController](#status_controller)
 * [CustomersController](#customers_controller)
-
-## <a name="accounts_controller"></a>![Class: ](https://apidocs.io/img/class.png "TangoCard.Raas.Controllers.AccountsController") AccountsController
-
-### Get singleton instance
-
-The singleton instance of the ``` AccountsController ``` class can be accessed from the API Client.
-
-```csharp
-AccountsController accounts = client.Accounts;
-```
-
-### <a name="get_accounts_by_customer"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.AccountsController.GetAccountsByCustomer") GetAccountsByCustomer
-
-> Gets a list of accounts for a given customer
-
-
-```csharp
-Task<List<Models.AccountSummaryModel>> GetAccountsByCustomer(string customerIdentifier)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerIdentifier |  ``` Required ```  | Customer Identifier |
-
-
-#### Example Usage
-
-```csharp
-string customerIdentifier = "customerIdentifier";
-
-List<Models.AccountSummaryModel> result = await accounts.GetAccountsByCustomer(customerIdentifier);
-
-```
-
-
-### <a name="get_account"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.AccountsController.GetAccount") GetAccount
-
-> Get an account
-
-
-```csharp
-Task<Models.AccountModel> GetAccount(string accountIdentifier)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| accountIdentifier |  ``` Required ```  | Account Identifier |
-
-
-#### Example Usage
-
-```csharp
-string accountIdentifier = "accountIdentifier";
-
-Models.AccountModel result = await accounts.GetAccount(accountIdentifier);
-
-```
-
-
-### <a name="create_account"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.AccountsController.CreateAccount") CreateAccount
-
-> Create an account under a given customer
-
-
-```csharp
-Task<Models.AccountModel> CreateAccount(string customerIdentifier, Models.CreateAccountRequestModel body)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerIdentifier |  ``` Required ```  | Customer Identifier |
-| body |  ``` Required ```  | Request Body |
-
-
-#### Example Usage
-
-```csharp
-string customerIdentifier = "customerIdentifier";
-var body = new Models.CreateAccountRequestModel();
-
-Models.AccountModel result = await accounts.CreateAccount(customerIdentifier, body);
-
-```
-
-
-### <a name="get_all_accounts"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.AccountsController.GetAllAccounts") GetAllAccounts
-
-> Gets all accounts under the platform
-
-
-```csharp
-Task<List<Models.AccountModel>> GetAllAccounts()
-```
-
-#### Example Usage
-
-```csharp
-
-List<Models.AccountModel> result = await accounts.GetAllAccounts();
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
+* [FundController](#fund_controller)
 
 ## <a name="orders_controller"></a>![Class: ](https://apidocs.io/img/class.png "TangoCard.Raas.Controllers.OrdersController") OrdersController
 
@@ -271,39 +158,13 @@ Models.OrderModel result = await orders.GetOrder(referenceOrderID);
 ```
 
 
-### <a name="create_resend_order"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.OrdersController.CreateResendOrder") CreateResendOrder
-
-> TODO: Add a method description
-
-
-```csharp
-Task<Models.ResendOrderResponseModel> CreateResendOrder(string referenceOrderID)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| referenceOrderID |  ``` Required ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```csharp
-string referenceOrderID = "referenceOrderID";
-
-Models.ResendOrderResponseModel result = await orders.CreateResendOrder(referenceOrderID);
-
-```
-
-
 ### <a name="get_orders"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.OrdersController.GetOrders") GetOrders
 
 > TODO: Add a method description
 
 
 ```csharp
-Task<Models.GetOrdersResponseModel> GetOrders(GetOrdersInput input)
+Task<Models.GetOrdersResponseModel> GetOrders(Models.GetOrdersInput input)
 ```
 
 #### Parameters
@@ -339,14 +200,150 @@ collect.StartDate = startDate;
 DateTime? endDate = DateTime.Now();
 collect.EndDate = endDate;
 
-int? elementsPerBlock = 244;
+int? elementsPerBlock = 122;
 collect.ElementsPerBlock = elementsPerBlock;
 
-int? page = 244;
+int? page = 122;
 collect.Page = page;
 
 
 Models.GetOrdersResponseModel result = await orders.GetOrders(collect);
+
+```
+
+
+### <a name="create_resend_order"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.OrdersController.CreateResendOrder") CreateResendOrder
+
+> TODO: Add a method description
+
+
+```csharp
+Task<Models.ResendOrderResponseModel> CreateResendOrder(string referenceOrderID)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| referenceOrderID |  ``` Required ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```csharp
+string referenceOrderID = "referenceOrderID";
+
+Models.ResendOrderResponseModel result = await orders.CreateResendOrder(referenceOrderID);
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="accounts_controller"></a>![Class: ](https://apidocs.io/img/class.png "TangoCard.Raas.Controllers.AccountsController") AccountsController
+
+### Get singleton instance
+
+The singleton instance of the ``` AccountsController ``` class can be accessed from the API Client.
+
+```csharp
+AccountsController accounts = client.Accounts;
+```
+
+### <a name="get_account"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.AccountsController.GetAccount") GetAccount
+
+> Get an account
+
+
+```csharp
+Task<Models.AccountModel> GetAccount(string accountIdentifier)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountIdentifier |  ``` Required ```  | Account Identifier |
+
+
+#### Example Usage
+
+```csharp
+string accountIdentifier = "accountIdentifier";
+
+Models.AccountModel result = await accounts.GetAccount(accountIdentifier);
+
+```
+
+
+### <a name="get_accounts_by_customer"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.AccountsController.GetAccountsByCustomer") GetAccountsByCustomer
+
+> Gets a list of accounts for a given customer
+
+
+```csharp
+Task<List<Models.AccountSummaryModel>> GetAccountsByCustomer(string customerIdentifier)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerIdentifier |  ``` Required ```  | Customer Identifier |
+
+
+#### Example Usage
+
+```csharp
+string customerIdentifier = "customerIdentifier";
+
+List<Models.AccountSummaryModel> result = await accounts.GetAccountsByCustomer(customerIdentifier);
+
+```
+
+
+### <a name="create_account"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.AccountsController.CreateAccount") CreateAccount
+
+> Create an account under a given customer
+
+
+```csharp
+Task<Models.AccountModel> CreateAccount(string customerIdentifier, Models.CreateAccountRequestModel body)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerIdentifier |  ``` Required ```  | Customer Identifier |
+| body |  ``` Required ```  | Request Body |
+
+
+#### Example Usage
+
+```csharp
+string customerIdentifier = "customerIdentifier";
+var body = new Models.CreateAccountRequestModel();
+
+Models.AccountModel result = await accounts.CreateAccount(customerIdentifier, body);
+
+```
+
+
+### <a name="get_all_accounts"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.AccountsController.GetAllAccounts") GetAllAccounts
+
+> Gets all accounts under the platform
+
+
+```csharp
+Task<List<Models.AccountModel>> GetAllAccounts()
+```
+
+#### Example Usage
+
+```csharp
+
+List<Models.AccountModel> result = await accounts.GetAllAccounts();
 
 ```
 
@@ -399,14 +396,14 @@ ExchangeRatesController exchangeRates = client.ExchangeRates;
 
 
 ```csharp
-Task GetExchangeRates()
+Task<Models.ExchangeRateResponseModel> GetExchangeRates()
 ```
 
 #### Example Usage
 
 ```csharp
 
-await exchangeRates.GetExchangeRates();
+Models.ExchangeRateResponseModel result = await exchangeRates.GetExchangeRates();
 
 ```
 
@@ -521,6 +518,166 @@ Task<List<Models.CustomerModel>> GetAllCustomers()
 ```csharp
 
 List<Models.CustomerModel> result = await customers.GetAllCustomers();
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="fund_controller"></a>![Class: ](https://apidocs.io/img/class.png "TangoCard.Raas.Controllers.FundController") FundController
+
+### Get singleton instance
+
+The singleton instance of the ``` FundController ``` class can be accessed from the API Client.
+
+```csharp
+FundController fund = client.Fund;
+```
+
+### <a name="get_credit_cards"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.FundController.GetCreditCards") GetCreditCards
+
+> List all credit cards registered on this platform
+
+
+```csharp
+Task<List<Models.CreditCardModel>> GetCreditCards()
+```
+
+#### Example Usage
+
+```csharp
+
+List<Models.CreditCardModel> result = await fund.GetCreditCards();
+
+```
+
+
+### <a name="create_credit_card"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.FundController.CreateCreditCard") CreateCreditCard
+
+> Register a new credit card
+
+
+```csharp
+Task<Models.CreditCardModel> CreateCreditCard(Models.CreateCreditCardRequestModel body)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```csharp
+var body = new Models.CreateCreditCardRequestModel();
+
+Models.CreditCardModel result = await fund.CreateCreditCard(body);
+
+```
+
+
+### <a name="create_unregister_credit_card"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.FundController.CreateUnregisterCreditCard") CreateUnregisterCreditCard
+
+> Unregister a credit card
+
+
+```csharp
+Task<Models.UnregisterCreditCardResponseModel> CreateUnregisterCreditCard(Models.UnregisterCreditCardRequestModel body)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```csharp
+var body = new Models.UnregisterCreditCardRequestModel();
+
+Models.UnregisterCreditCardResponseModel result = await fund.CreateUnregisterCreditCard(body);
+
+```
+
+
+### <a name="create_deposit"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.FundController.CreateDeposit") CreateDeposit
+
+> Fund an account
+
+
+```csharp
+Task<Models.DepositResponseModel> CreateDeposit(Models.DepositRequestModel body)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```csharp
+var body = new Models.DepositRequestModel();
+
+Models.DepositResponseModel result = await fund.CreateDeposit(body);
+
+```
+
+
+### <a name="get_deposit"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.FundController.GetDeposit") GetDeposit
+
+> Get details for a specific credit card deposit
+
+
+```csharp
+Task<Models.GetDepositResponseModel> GetDeposit(string depositId)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| depositId |  ``` Required ```  | Deposit ID |
+
+
+#### Example Usage
+
+```csharp
+string depositId = "depositId";
+
+Models.GetDepositResponseModel result = await fund.GetDeposit(depositId);
+
+```
+
+
+### <a name="get_credit_card"></a>![Method: ](https://apidocs.io/img/method.png "TangoCard.Raas.Controllers.FundController.GetCreditCard") GetCreditCard
+
+> Get details for a specific credit card
+
+
+```csharp
+Task<Models.CreditCardModel> GetCreditCard(string token)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| token |  ``` Required ```  | Card Token |
+
+
+#### Example Usage
+
+```csharp
+string token = "token";
+
+Models.CreditCardModel result = await fund.GetCreditCard(token);
 
 ```
 

@@ -18,7 +18,6 @@ using TangoCard.Raas.Http.Request;
 using TangoCard.Raas.Http.Response;
 using TangoCard.Raas.Http.Client;
 using TangoCard.Raas.Exceptions;
-using TangoCard.Raas.Models;
 
 namespace TangoCard.Raas.Controllers
 {
@@ -49,72 +48,6 @@ namespace TangoCard.Raas.Controllers
         }
 
         #endregion Singleton Pattern
-
-        /// <summary>
-        /// Gets a list of accounts for a given customer
-        /// </summary>
-        /// <param name="customerIdentifier">Required parameter: Customer Identifier</param>
-        /// <return>Returns the List<Models.AccountSummaryModel> response from the API call</return>
-        public List<Models.AccountSummaryModel> GetAccountsByCustomer(string customerIdentifier)
-        {
-            Task<List<Models.AccountSummaryModel>> t = GetAccountsByCustomerAsync(customerIdentifier);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// Gets a list of accounts for a given customer
-        /// </summary>
-        /// <param name="customerIdentifier">Required parameter: Customer Identifier</param>
-        /// <return>Returns the List<Models.AccountSummaryModel> response from the API call</return>
-        public async Task<List<Models.AccountSummaryModel>> GetAccountsByCustomerAsync(string customerIdentifier)
-        {
-            //validating required parameters
-            if (null == customerIdentifier)
-                throw new ArgumentNullException("customerIdentifier", "The parameter \"customerIdentifier\" is a required parameter and cannot be null.");
-
-            //the base uri for api requests
-            string _baseUri = Configuration.GetBaseURI();
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/customers/{customerIdentifier}/accounts");
-
-            //process optional template parameters
-            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
-            {
-                { "customerIdentifier", customerIdentifier }
-            });
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "TangoCardv2NGSDK" },
-                { "accept", "application/json" }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Get(_queryUrl,_headers, Configuration.PlatformName, Configuration.PlatformKey);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return APIHelper.JsonDeserialize<List<Models.AccountSummaryModel>>(_response.Body);
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
 
         /// <summary>
         /// Get an account
@@ -175,6 +108,72 @@ namespace TangoCard.Raas.Controllers
             try
             {
                 return APIHelper.JsonDeserialize<Models.AccountModel>(_response.Body);
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Gets a list of accounts for a given customer
+        /// </summary>
+        /// <param name="customerIdentifier">Required parameter: Customer Identifier</param>
+        /// <return>Returns the List<Models.AccountSummaryModel> response from the API call</return>
+        public List<Models.AccountSummaryModel> GetAccountsByCustomer(string customerIdentifier)
+        {
+            Task<List<Models.AccountSummaryModel>> t = GetAccountsByCustomerAsync(customerIdentifier);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Gets a list of accounts for a given customer
+        /// </summary>
+        /// <param name="customerIdentifier">Required parameter: Customer Identifier</param>
+        /// <return>Returns the List<Models.AccountSummaryModel> response from the API call</return>
+        public async Task<List<Models.AccountSummaryModel>> GetAccountsByCustomerAsync(string customerIdentifier)
+        {
+            //validating required parameters
+            if (null == customerIdentifier)
+                throw new ArgumentNullException("customerIdentifier", "The parameter \"customerIdentifier\" is a required parameter and cannot be null.");
+
+            //the base uri for api requests
+            string _baseUri = Configuration.GetBaseURI();
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/customers/{customerIdentifier}/accounts");
+
+            //process optional template parameters
+            APIHelper.AppendUrlWithTemplateParameters(_queryBuilder, new Dictionary<string, object>()
+            {
+                { "customerIdentifier", customerIdentifier }
+            });
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "TangoCardv2NGSDK" },
+                { "accept", "application/json" }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Get(_queryUrl,_headers, Configuration.PlatformName, Configuration.PlatformKey);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return APIHelper.JsonDeserialize<List<Models.AccountSummaryModel>>(_response.Body);
             }
             catch (Exception _ex)
             {
