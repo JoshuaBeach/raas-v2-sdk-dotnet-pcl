@@ -28,7 +28,7 @@ namespace TangoCard.Raas.Models
         private double? mvalue;
 
         /// <summary>
-        /// Currency Code
+        /// A 3 digit currency code
         /// </summary>
         [JsonProperty("currencyCode")]
         public string CurrencyCode 
@@ -45,7 +45,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Exchange Rate
+        /// The exchange rate
         /// </summary>
         [JsonProperty("exchangeRate")]
         public double? ExchangeRate 
@@ -62,7 +62,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Fee
+        /// The amount of the fee applied
         /// </summary>
         [JsonProperty("fee")]
         public double? Fee 
@@ -79,7 +79,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Total
+        /// The order total
         /// </summary>
         [JsonProperty("total")]
         public double? Total 
@@ -96,7 +96,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Value
+        /// The value of the order
         /// </summary>
         [JsonProperty("value")]
         public double? Value 

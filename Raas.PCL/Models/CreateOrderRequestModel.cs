@@ -33,9 +33,10 @@ namespace TangoCard.Raas.Models
         private Models.NameEmailModel recipient;
         private Models.NameEmailModel sender;
         private string notes;
+        private string etid;
 
         /// <summary>
-        /// Account Identifier
+        /// The account identifier
         /// </summary>
         [JsonProperty("accountIdentifier")]
         public string AccountIdentifier 
@@ -52,7 +53,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Amount
+        /// The order amount
         /// </summary>
         [JsonProperty("amount")]
         public double Amount 
@@ -69,7 +70,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Customer Identifier
+        /// The customer identifier
         /// </summary>
         [JsonProperty("customerIdentifier")]
         public string CustomerIdentifier 
@@ -86,7 +87,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Send Email
+        /// Indicates whether we should deliver this reward via email
         /// </summary>
         [JsonProperty("sendEmail")]
         public bool SendEmail 
@@ -103,7 +104,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// UTID
+        /// The UTID
         /// </summary>
         [JsonProperty("utid")]
         public string Utid 
@@ -120,7 +121,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Campaign
+        /// An optional campaign identifier
         /// </summary>
         [JsonProperty("campaign")]
         public string Campaign 
@@ -137,7 +138,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Email Subject
+        /// The subject of the gift email
         /// </summary>
         [JsonProperty("emailSubject")]
         public string EmailSubject 
@@ -154,7 +155,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// External Reference ID
+        /// An optional external reference id
         /// </summary>
         [JsonProperty("externalRefID")]
         public string ExternalRefID 
@@ -171,7 +172,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Email Message
+        /// The gift message in the email
         /// </summary>
         [JsonProperty("message")]
         public string Message 
@@ -188,7 +189,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Recipient
+        /// The recipient's information
         /// </summary>
         [JsonProperty("recipient")]
         public Models.NameEmailModel Recipient 
@@ -205,7 +206,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Sender
+        /// Optional sender information
         /// </summary>
         [JsonProperty("sender")]
         public Models.NameEmailModel Sender 
@@ -222,7 +223,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Notes
+        /// Optional notes (not displayed to customer)
         /// </summary>
         [JsonProperty("notes")]
         public string Notes 
@@ -235,6 +236,23 @@ namespace TangoCard.Raas.Models
             {
                 this.notes = value;
                 onPropertyChanged("Notes");
+            }
+        }
+
+        /// <summary>
+        /// The email template identifier
+        /// </summary>
+        [JsonProperty("etid")]
+        public string Etid 
+        { 
+            get 
+            {
+                return this.etid; 
+            } 
+            set 
+            {
+                this.etid = value;
+                onPropertyChanged("Etid");
             }
         }
     }

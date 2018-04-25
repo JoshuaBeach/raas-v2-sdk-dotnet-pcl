@@ -50,7 +50,7 @@ namespace TangoCard.Raas.Controllers
         #endregion Singleton Pattern
 
         /// <summary>
-        /// Get Catalog
+        /// Retrieves a platform's catalog
         /// </summary>
         /// <return>Returns the Models.CatalogModel response from the API call</return>
         public Models.CatalogModel GetCatalog()
@@ -61,7 +61,7 @@ namespace TangoCard.Raas.Controllers
         }
 
         /// <summary>
-        /// Get Catalog
+        /// Retrieves a platform's catalog
         /// </summary>
         /// <return>Returns the Models.CatalogModel response from the API call</return>
         public async Task<Models.CatalogModel> GetCatalogAsync()
@@ -80,7 +80,7 @@ namespace TangoCard.Raas.Controllers
             //append request with appropriate headers and parameters
             var _headers = new Dictionary<string,string>()
             {
-                { "user-agent", "TangoCardv2NGSDK" },
+                { "user-agent", "V2NGSDK" },
                 { "accept", "application/json" }
             };
 
@@ -90,6 +90,11 @@ namespace TangoCard.Raas.Controllers
             //invoke request and get response
             HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
+
+            //Error handling using HTTP status codes
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
+                throw new RaasGenericException(@"API Error", _context);
+
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
 

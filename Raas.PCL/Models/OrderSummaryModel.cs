@@ -18,7 +18,7 @@ using TangoCard.Raas.Utilities;
 
 namespace TangoCard.Raas.Models
 {
-    public class OrderModel : BaseModel 
+    public class OrderSummaryModel : BaseModel 
     {
         // These fields hold the values for the public properties.
         private string referenceOrderID;
@@ -26,22 +26,15 @@ namespace TangoCard.Raas.Models
         private string accountIdentifier;
         private string accountNumber;
         private Models.CurrencyBreakdownModel amountCharged;
-        private Models.CurrencyBreakdownModel denomination;
+        private Models.CurrencyBreakdownModel marginShare;
         private string utid;
         private string rewardName;
+        private string sender;
+        private Models.NameEmailModel recipient;
         private bool sendEmail;
         private string status;
         private DateTime createdAt;
-        private Models.RewardModel reward;
-        private Models.NameEmailModel sender;
-        private Models.NameEmailModel recipient;
         private string etid;
-        private string campaign;
-        private string emailSubject;
-        private string externalRefID;
-        private string message;
-        private string notes;
-        private Models.CurrencyBreakdownModel marginShare;
 
         /// <summary>
         /// The reference order id
@@ -112,7 +105,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// The order's amount information
+        /// The order amount information
         /// </summary>
         [JsonProperty("amountCharged")]
         public Models.CurrencyBreakdownModel AmountCharged 
@@ -129,19 +122,19 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Information about the gift card amount
+        /// The margin share information
         /// </summary>
-        [JsonProperty("denomination")]
-        public Models.CurrencyBreakdownModel Denomination 
+        [JsonProperty("marginShare")]
+        public Models.CurrencyBreakdownModel MarginShare 
         { 
             get 
             {
-                return this.denomination; 
+                return this.marginShare; 
             } 
             set 
             {
-                this.denomination = value;
-                onPropertyChanged("Denomination");
+                this.marginShare = value;
+                onPropertyChanged("MarginShare");
             }
         }
 
@@ -163,7 +156,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// The reward name
+        /// The reward's name
         /// </summary>
         [JsonProperty("rewardName")]
         public string RewardName 
@@ -180,7 +173,41 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Indicates if an email was sent to the recipient
+        /// The sender's information
+        /// </summary>
+        [JsonProperty("sender")]
+        public string Sender 
+        { 
+            get 
+            {
+                return this.sender; 
+            } 
+            set 
+            {
+                this.sender = value;
+                onPropertyChanged("Sender");
+            }
+        }
+
+        /// <summary>
+        /// The recipient's information
+        /// </summary>
+        [JsonProperty("recipient")]
+        public Models.NameEmailModel Recipient 
+        { 
+            get 
+            {
+                return this.recipient; 
+            } 
+            set 
+            {
+                this.recipient = value;
+                onPropertyChanged("Recipient");
+            }
+        }
+
+        /// <summary>
+        /// Indicates if an an email was sent to the recipient
         /// </summary>
         [JsonProperty("sendEmail")]
         public bool SendEmail 
@@ -214,7 +241,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// When the order was placed
+        /// The date the order was placed
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("createdAt")]
@@ -232,58 +259,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Contains the reward credentials
-        /// </summary>
-        [JsonProperty("reward")]
-        public Models.RewardModel Reward 
-        { 
-            get 
-            {
-                return this.reward; 
-            } 
-            set 
-            {
-                this.reward = value;
-                onPropertyChanged("Reward");
-            }
-        }
-
-        /// <summary>
-        /// The sender data
-        /// </summary>
-        [JsonProperty("sender")]
-        public Models.NameEmailModel Sender 
-        { 
-            get 
-            {
-                return this.sender; 
-            } 
-            set 
-            {
-                this.sender = value;
-                onPropertyChanged("Sender");
-            }
-        }
-
-        /// <summary>
-        /// The recipient data
-        /// </summary>
-        [JsonProperty("recipient")]
-        public Models.NameEmailModel Recipient 
-        { 
-            get 
-            {
-                return this.recipient; 
-            } 
-            set 
-            {
-                this.recipient = value;
-                onPropertyChanged("Recipient");
-            }
-        }
-
-        /// <summary>
-        /// The email template id
+        /// The order's email template id
         /// </summary>
         [JsonProperty("etid")]
         public string Etid 
@@ -296,108 +272,6 @@ namespace TangoCard.Raas.Models
             {
                 this.etid = value;
                 onPropertyChanged("Etid");
-            }
-        }
-
-        /// <summary>
-        /// An optional campaign identifier
-        /// </summary>
-        [JsonProperty("campaign")]
-        public string Campaign 
-        { 
-            get 
-            {
-                return this.campaign; 
-            } 
-            set 
-            {
-                this.campaign = value;
-                onPropertyChanged("Campaign");
-            }
-        }
-
-        /// <summary>
-        /// The subject of the email
-        /// </summary>
-        [JsonProperty("emailSubject")]
-        public string EmailSubject 
-        { 
-            get 
-            {
-                return this.emailSubject; 
-            } 
-            set 
-            {
-                this.emailSubject = value;
-                onPropertyChanged("EmailSubject");
-            }
-        }
-
-        /// <summary>
-        /// An external reference id
-        /// </summary>
-        [JsonProperty("externalRefID")]
-        public string ExternalRefID 
-        { 
-            get 
-            {
-                return this.externalRefID; 
-            } 
-            set 
-            {
-                this.externalRefID = value;
-                onPropertyChanged("ExternalRefID");
-            }
-        }
-
-        /// <summary>
-        /// A message included with the email
-        /// </summary>
-        [JsonProperty("message")]
-        public string Message 
-        { 
-            get 
-            {
-                return this.message; 
-            } 
-            set 
-            {
-                this.message = value;
-                onPropertyChanged("Message");
-            }
-        }
-
-        /// <summary>
-        /// Optional customer notes
-        /// </summary>
-        [JsonProperty("notes")]
-        public string Notes 
-        { 
-            get 
-            {
-                return this.notes; 
-            } 
-            set 
-            {
-                this.notes = value;
-                onPropertyChanged("Notes");
-            }
-        }
-
-        /// <summary>
-        /// Margin share information
-        /// </summary>
-        [JsonProperty("marginShare")]
-        public Models.CurrencyBreakdownModel MarginShare 
-        { 
-            get 
-            {
-                return this.marginShare; 
-            } 
-            set 
-            {
-                this.marginShare = value;
-                onPropertyChanged("MarginShare");
             }
         }
     }

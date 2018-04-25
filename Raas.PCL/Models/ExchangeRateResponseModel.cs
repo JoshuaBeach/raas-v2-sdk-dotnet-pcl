@@ -25,7 +25,7 @@ namespace TangoCard.Raas.Models
         private List<Models.ExchangeRateModel> exchangeRates;
 
         /// <summary>
-        /// Disclaimer
+        /// A disclaimer about the exchange rates returned
         /// </summary>
         [JsonProperty("disclaimer")]
         public string Disclaimer 
@@ -42,7 +42,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Exchange Rates
+        /// An array of ExchangeRate objects
         /// </summary>
         [JsonProperty("exchangeRates")]
         public List<Models.ExchangeRateModel> ExchangeRates 

@@ -26,7 +26,7 @@ namespace TangoCard.Raas.Models
         private string token;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The date the card was removed
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("createdDate")]
@@ -44,7 +44,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// A message describing the status of the card
         /// </summary>
         [JsonProperty("message")]
         public string Message 
@@ -61,7 +61,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The credit card token
         /// </summary>
         [JsonProperty("token")]
         public string Token 

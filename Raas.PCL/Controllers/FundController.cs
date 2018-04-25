@@ -50,124 +50,6 @@ namespace TangoCard.Raas.Controllers
         #endregion Singleton Pattern
 
         /// <summary>
-        /// List all credit cards registered on this platform
-        /// </summary>
-        /// <return>Returns the List<Models.CreditCardModel> response from the API call</return>
-        public List<Models.CreditCardModel> GetCreditCards()
-        {
-            Task<List<Models.CreditCardModel>> t = GetCreditCardsAsync();
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// List all credit cards registered on this platform
-        /// </summary>
-        /// <return>Returns the List<Models.CreditCardModel> response from the API call</return>
-        public async Task<List<Models.CreditCardModel>> GetCreditCardsAsync()
-        {
-            //the base uri for api requests
-            string _baseUri = Configuration.GetBaseURI();
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/creditCards");
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "TangoCardv2NGSDK" },
-                { "accept", "application/json" }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Get(_queryUrl,_headers, Configuration.PlatformName, Configuration.PlatformKey);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return APIHelper.JsonDeserialize<List<Models.CreditCardModel>>(_response.Body);
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// Register a new credit card
-        /// </summary>
-        /// <param name="body">Required parameter: Example: </param>
-        /// <return>Returns the Models.CreditCardModel response from the API call</return>
-        public Models.CreditCardModel CreateCreditCard(Models.CreateCreditCardRequestModel body)
-        {
-            Task<Models.CreditCardModel> t = CreateCreditCardAsync(body);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// Register a new credit card
-        /// </summary>
-        /// <param name="body">Required parameter: Example: </param>
-        /// <return>Returns the Models.CreditCardModel response from the API call</return>
-        public async Task<Models.CreditCardModel> CreateCreditCardAsync(Models.CreateCreditCardRequestModel body)
-        {
-            //validating required parameters
-            if (null == body)
-                throw new ArgumentNullException("body", "The parameter \"body\" is a required parameter and cannot be null.");
-
-            //the base uri for api requests
-            string _baseUri = Configuration.GetBaseURI();
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/creditCards");
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "TangoCardv2NGSDK" },
-                { "accept", "application/json" },
-                { "content-type", "application/json; charset=utf-8" }
-            };
-
-            //append body params
-            var _body = APIHelper.JsonSerialize(body);
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.PostBody(_queryUrl, _headers, _body, Configuration.PlatformName, Configuration.PlatformKey);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return APIHelper.JsonDeserialize<Models.CreditCardModel>(_response.Body);
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
         /// Unregister a credit card
         /// </summary>
         /// <param name="body">Required parameter: Example: </param>
@@ -204,7 +86,7 @@ namespace TangoCard.Raas.Controllers
             //append request with appropriate headers and parameters
             var _headers = new Dictionary<string,string>()
             {
-                { "user-agent", "TangoCardv2NGSDK" },
+                { "user-agent", "V2NGSDK" },
                 { "accept", "application/json" },
                 { "content-type", "application/json; charset=utf-8" }
             };
@@ -218,6 +100,11 @@ namespace TangoCard.Raas.Controllers
             //invoke request and get response
             HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
+
+            //Error handling using HTTP status codes
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
+                throw new RaasGenericException(@"API Error", _context);
+
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
 
@@ -232,73 +119,9 @@ namespace TangoCard.Raas.Controllers
         }
 
         /// <summary>
-        /// Fund an account
-        /// </summary>
-        /// <param name="body">Required parameter: Example: </param>
-        /// <return>Returns the Models.DepositResponseModel response from the API call</return>
-        public Models.DepositResponseModel CreateDeposit(Models.DepositRequestModel body)
-        {
-            Task<Models.DepositResponseModel> t = CreateDepositAsync(body);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// Fund an account
-        /// </summary>
-        /// <param name="body">Required parameter: Example: </param>
-        /// <return>Returns the Models.DepositResponseModel response from the API call</return>
-        public async Task<Models.DepositResponseModel> CreateDepositAsync(Models.DepositRequestModel body)
-        {
-            //validating required parameters
-            if (null == body)
-                throw new ArgumentNullException("body", "The parameter \"body\" is a required parameter and cannot be null.");
-
-            //the base uri for api requests
-            string _baseUri = Configuration.GetBaseURI();
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/creditCardDeposits");
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "TangoCardv2NGSDK" },
-                { "accept", "application/json" },
-                { "content-type", "application/json; charset=utf-8" }
-            };
-
-            //append body params
-            var _body = APIHelper.JsonSerialize(body);
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.PostBody(_queryUrl, _headers, _body, Configuration.PlatformName, Configuration.PlatformKey);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return APIHelper.JsonDeserialize<Models.DepositResponseModel>(_response.Body);
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
         /// Get details for a specific credit card deposit
         /// </summary>
-        /// <param name="depositId">Required parameter: Deposit ID</param>
+        /// <param name="depositId">Required parameter: The reference deposit id</param>
         /// <return>Returns the Models.GetDepositResponseModel response from the API call</return>
         public Models.GetDepositResponseModel GetDeposit(string depositId)
         {
@@ -310,7 +133,7 @@ namespace TangoCard.Raas.Controllers
         /// <summary>
         /// Get details for a specific credit card deposit
         /// </summary>
-        /// <param name="depositId">Required parameter: Deposit ID</param>
+        /// <param name="depositId">Required parameter: The reference deposit id</param>
         /// <return>Returns the Models.GetDepositResponseModel response from the API call</return>
         public async Task<Models.GetDepositResponseModel> GetDepositAsync(string depositId)
         {
@@ -338,7 +161,7 @@ namespace TangoCard.Raas.Controllers
             //append request with appropriate headers and parameters
             var _headers = new Dictionary<string,string>()
             {
-                { "user-agent", "TangoCardv2NGSDK" },
+                { "user-agent", "V2NGSDK" },
                 { "accept", "application/json" }
             };
 
@@ -348,6 +171,11 @@ namespace TangoCard.Raas.Controllers
             //invoke request and get response
             HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
+
+            //Error handling using HTTP status codes
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
+                throw new RaasGenericException(@"API Error", _context);
+
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
 
@@ -362,9 +190,137 @@ namespace TangoCard.Raas.Controllers
         }
 
         /// <summary>
-        /// Get details for a specific credit card
+        /// Funds an account via credit card
         /// </summary>
-        /// <param name="token">Required parameter: Card Token</param>
+        /// <param name="body">Required parameter: Example: </param>
+        /// <return>Returns the Models.DepositResponseModel response from the API call</return>
+        public Models.DepositResponseModel CreateDeposit(Models.DepositRequestModel body)
+        {
+            Task<Models.DepositResponseModel> t = CreateDepositAsync(body);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Funds an account via credit card
+        /// </summary>
+        /// <param name="body">Required parameter: Example: </param>
+        /// <return>Returns the Models.DepositResponseModel response from the API call</return>
+        public async Task<Models.DepositResponseModel> CreateDepositAsync(Models.DepositRequestModel body)
+        {
+            //validating required parameters
+            if (null == body)
+                throw new ArgumentNullException("body", "The parameter \"body\" is a required parameter and cannot be null.");
+
+            //the base uri for api requests
+            string _baseUri = Configuration.GetBaseURI();
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/creditCardDeposits");
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "V2NGSDK" },
+                { "accept", "application/json" },
+                { "content-type", "application/json; charset=utf-8" }
+            };
+
+            //append body params
+            var _body = APIHelper.JsonSerialize(body);
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.PostBody(_queryUrl, _headers, _body, Configuration.PlatformName, Configuration.PlatformKey);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+
+            //Error handling using HTTP status codes
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
+                throw new RaasGenericException(@"API Error", _context);
+
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return APIHelper.JsonDeserialize<Models.DepositResponseModel>(_response.Body);
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves all credit cards registered on the platform
+        /// </summary>
+        /// <return>Returns the List<Models.CreditCardModel> response from the API call</return>
+        public List<Models.CreditCardModel> GetCreditCards()
+        {
+            Task<List<Models.CreditCardModel>> t = GetCreditCardsAsync();
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Retrieves all credit cards registered on the platform
+        /// </summary>
+        /// <return>Returns the List<Models.CreditCardModel> response from the API call</return>
+        public async Task<List<Models.CreditCardModel>> GetCreditCardsAsync()
+        {
+            //the base uri for api requests
+            string _baseUri = Configuration.GetBaseURI();
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/creditCards");
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "V2NGSDK" },
+                { "accept", "application/json" }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Get(_queryUrl,_headers, Configuration.PlatformName, Configuration.PlatformKey);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+
+            //Error handling using HTTP status codes
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
+                throw new RaasGenericException(@"API Error", _context);
+
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return APIHelper.JsonDeserialize<List<Models.CreditCardModel>>(_response.Body);
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves details for a single credit card
+        /// </summary>
+        /// <param name="token">Required parameter: Credit Card Token</param>
         /// <return>Returns the Models.CreditCardModel response from the API call</return>
         public Models.CreditCardModel GetCreditCard(string token)
         {
@@ -374,9 +330,9 @@ namespace TangoCard.Raas.Controllers
         }
 
         /// <summary>
-        /// Get details for a specific credit card
+        /// Retrieves details for a single credit card
         /// </summary>
-        /// <param name="token">Required parameter: Card Token</param>
+        /// <param name="token">Required parameter: Credit Card Token</param>
         /// <return>Returns the Models.CreditCardModel response from the API call</return>
         public async Task<Models.CreditCardModel> GetCreditCardAsync(string token)
         {
@@ -404,7 +360,7 @@ namespace TangoCard.Raas.Controllers
             //append request with appropriate headers and parameters
             var _headers = new Dictionary<string,string>()
             {
-                { "user-agent", "TangoCardv2NGSDK" },
+                { "user-agent", "V2NGSDK" },
                 { "accept", "application/json" }
             };
 
@@ -414,6 +370,80 @@ namespace TangoCard.Raas.Controllers
             //invoke request and get response
             HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
+
+            //Error handling using HTTP status codes
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
+                throw new RaasGenericException(@"API Error", _context);
+
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return APIHelper.JsonDeserialize<Models.CreditCardModel>(_response.Body);
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Registers a new credit card
+        /// </summary>
+        /// <param name="body">Required parameter: A CreateCreditCardRequest object</param>
+        /// <return>Returns the Models.CreditCardModel response from the API call</return>
+        public Models.CreditCardModel CreateCreditCard(Models.CreateCreditCardRequestModel body)
+        {
+            Task<Models.CreditCardModel> t = CreateCreditCardAsync(body);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Registers a new credit card
+        /// </summary>
+        /// <param name="body">Required parameter: A CreateCreditCardRequest object</param>
+        /// <return>Returns the Models.CreditCardModel response from the API call</return>
+        public async Task<Models.CreditCardModel> CreateCreditCardAsync(Models.CreateCreditCardRequestModel body)
+        {
+            //validating required parameters
+            if (null == body)
+                throw new ArgumentNullException("body", "The parameter \"body\" is a required parameter and cannot be null.");
+
+            //the base uri for api requests
+            string _baseUri = Configuration.GetBaseURI();
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/creditCards");
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "V2NGSDK" },
+                { "accept", "application/json" },
+                { "content-type", "application/json; charset=utf-8" }
+            };
+
+            //append body params
+            var _body = APIHelper.JsonSerialize(body);
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.PostBody(_queryUrl, _headers, _body, Configuration.PlatformName, Configuration.PlatformKey);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+
+            //Error handling using HTTP status codes
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
+                throw new RaasGenericException(@"API Error", _context);
+
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
 

@@ -26,7 +26,7 @@ namespace TangoCard.Raas.Models
         private string type;
 
         /// <summary>
-        /// Credential Label
+        /// The label of the credential
         /// </summary>
         [JsonProperty("label")]
         public string Label 
@@ -43,7 +43,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Credential Value
+        /// The actual credential
         /// </summary>
         [JsonProperty("value")]
         public string Value 
@@ -60,7 +60,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Credential Type
+        /// The type of the credential
         /// </summary>
         [JsonProperty("type")]
         public string Type 

@@ -28,7 +28,7 @@ namespace TangoCard.Raas.Controllers
                     {
                         clientInstance = new HTTPClient()
 ;
-                        clientInstance.setTimeout(TimeSpan.FromMilliseconds(15000));
+                        clientInstance.setTimeout(TimeSpan.FromMilliseconds(60000));
                     }
                     return clientInstance;
                 }

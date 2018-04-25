@@ -26,7 +26,7 @@ namespace TangoCard.Raas.Models
         private string contactEmail;
 
         /// <summary>
-        /// Account Identifier
+        /// The account identifier
         /// </summary>
         [JsonProperty("accountIdentifier")]
         public string AccountIdentifier 
@@ -43,7 +43,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Display Name
+        /// The display name
         /// </summary>
         [JsonProperty("displayName")]
         public string DisplayName 
@@ -60,7 +60,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Contact Email
+        /// The contact email
         /// </summary>
         [JsonProperty("contactEmail")]
         public string ContactEmail 

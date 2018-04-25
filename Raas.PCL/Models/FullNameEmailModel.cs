@@ -18,43 +18,43 @@ using TangoCard.Raas.Utilities;
 
 namespace TangoCard.Raas.Models
 {
-    public class CreateCustomerRequestModel : BaseModel 
+    public class FullNameEmailModel : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string customerIdentifier;
-        private string displayName;
+        private string fullName;
+        private string emailAddress;
 
         /// <summary>
-        /// The customer identifier
+        /// The full name
         /// </summary>
-        [JsonProperty("customerIdentifier")]
-        public string CustomerIdentifier 
+        [JsonProperty("fullName")]
+        public string FullName 
         { 
             get 
             {
-                return this.customerIdentifier; 
+                return this.fullName; 
             } 
             set 
             {
-                this.customerIdentifier = value;
-                onPropertyChanged("CustomerIdentifier");
+                this.fullName = value;
+                onPropertyChanged("FullName");
             }
         }
 
         /// <summary>
-        /// The display name
+        /// The email address
         /// </summary>
-        [JsonProperty("displayName")]
-        public string DisplayName 
+        [JsonProperty("emailAddress")]
+        public string EmailAddress 
         { 
             get 
             {
-                return this.displayName; 
+                return this.emailAddress; 
             } 
             set 
             {
-                this.displayName = value;
-                onPropertyChanged("DisplayName");
+                this.emailAddress = value;
+                onPropertyChanged("EmailAddress");
             }
         }
     }

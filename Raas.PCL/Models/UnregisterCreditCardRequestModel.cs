@@ -26,7 +26,7 @@ namespace TangoCard.Raas.Models
         private string creditCardToken;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The customer identifier
         /// </summary>
         [JsonProperty("customerIdentifier")]
         public string CustomerIdentifier 
@@ -43,7 +43,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The account identifier
         /// </summary>
         [JsonProperty("accountIdentifier")]
         public string AccountIdentifier 
@@ -60,7 +60,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The credit card token
         /// </summary>
         [JsonProperty("creditCardToken")]
         public string CreditCardToken 

@@ -50,7 +50,135 @@ namespace TangoCard.Raas.Controllers
         #endregion Singleton Pattern
 
         /// <summary>
-        /// Get a customer
+        /// Creates a new customer
+        /// </summary>
+        /// <param name="body">Required parameter: Request Body</param>
+        /// <return>Returns the Models.CustomerModel response from the API call</return>
+        public Models.CustomerModel CreateCustomer(Models.CreateCustomerRequestModel body)
+        {
+            Task<Models.CustomerModel> t = CreateCustomerAsync(body);
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Creates a new customer
+        /// </summary>
+        /// <param name="body">Required parameter: Request Body</param>
+        /// <return>Returns the Models.CustomerModel response from the API call</return>
+        public async Task<Models.CustomerModel> CreateCustomerAsync(Models.CreateCustomerRequestModel body)
+        {
+            //validating required parameters
+            if (null == body)
+                throw new ArgumentNullException("body", "The parameter \"body\" is a required parameter and cannot be null.");
+
+            //the base uri for api requests
+            string _baseUri = Configuration.GetBaseURI();
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/customers");
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "V2NGSDK" },
+                { "accept", "application/json" },
+                { "content-type", "application/json; charset=utf-8" }
+            };
+
+            //append body params
+            var _body = APIHelper.JsonSerialize(body);
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.PostBody(_queryUrl, _headers, _body, Configuration.PlatformName, Configuration.PlatformKey);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+
+            //Error handling using HTTP status codes
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
+                throw new RaasGenericException(@"API Error", _context);
+
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return APIHelper.JsonDeserialize<Models.CustomerModel>(_response.Body);
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves all customers under the platform
+        /// </summary>
+        /// <return>Returns the List<Models.CustomerModel> response from the API call</return>
+        public List<Models.CustomerModel> GetAllCustomers()
+        {
+            Task<List<Models.CustomerModel>> t = GetAllCustomersAsync();
+            APIHelper.RunTaskSynchronously(t);
+            return t.Result;
+        }
+
+        /// <summary>
+        /// Retrieves all customers under the platform
+        /// </summary>
+        /// <return>Returns the List<Models.CustomerModel> response from the API call</return>
+        public async Task<List<Models.CustomerModel>> GetAllCustomersAsync()
+        {
+            //the base uri for api requests
+            string _baseUri = Configuration.GetBaseURI();
+
+            //prepare query string for API call
+            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
+            _queryBuilder.Append("/customers");
+
+
+            //validate and preprocess url
+            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
+
+            //append request with appropriate headers and parameters
+            var _headers = new Dictionary<string,string>()
+            {
+                { "user-agent", "V2NGSDK" },
+                { "accept", "application/json" }
+            };
+
+            //prepare the API call request to fetch the response
+            HttpRequest _request = ClientInstance.Get(_queryUrl,_headers, Configuration.PlatformName, Configuration.PlatformKey);
+
+            //invoke request and get response
+            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request,_response);
+
+            //Error handling using HTTP status codes
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
+                throw new RaasGenericException(@"API Error", _context);
+
+            //handle errors defined at the API level
+            base.ValidateResponse(_response, _context);
+
+            try
+            {
+                return APIHelper.JsonDeserialize<List<Models.CustomerModel>>(_response.Body);
+            }
+            catch (Exception _ex)
+            {
+                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves a single customer
         /// </summary>
         /// <param name="customerIdentifier">Required parameter: Customer Identifier</param>
         /// <return>Returns the Models.CustomerModel response from the API call</return>
@@ -62,7 +190,7 @@ namespace TangoCard.Raas.Controllers
         }
 
         /// <summary>
-        /// Get a customer
+        /// Retrieves a single customer
         /// </summary>
         /// <param name="customerIdentifier">Required parameter: Customer Identifier</param>
         /// <return>Returns the Models.CustomerModel response from the API call</return>
@@ -92,7 +220,7 @@ namespace TangoCard.Raas.Controllers
             //append request with appropriate headers and parameters
             var _headers = new Dictionary<string,string>()
             {
-                { "user-agent", "TangoCardv2NGSDK" },
+                { "user-agent", "V2NGSDK" },
                 { "accept", "application/json" }
             };
 
@@ -102,130 +230,17 @@ namespace TangoCard.Raas.Controllers
             //invoke request and get response
             HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
+
+            //Error handling using HTTP status codes
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
+                throw new RaasGenericException(@"API Error", _context);
+
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
 
             try
             {
                 return APIHelper.JsonDeserialize<Models.CustomerModel>(_response.Body);
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// Create a new customer
-        /// </summary>
-        /// <param name="body">Required parameter: Request Body</param>
-        /// <return>Returns the Models.CustomerModel response from the API call</return>
-        public Models.CustomerModel CreateCustomer(Models.CreateCustomerRequestModel body)
-        {
-            Task<Models.CustomerModel> t = CreateCustomerAsync(body);
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// Create a new customer
-        /// </summary>
-        /// <param name="body">Required parameter: Request Body</param>
-        /// <return>Returns the Models.CustomerModel response from the API call</return>
-        public async Task<Models.CustomerModel> CreateCustomerAsync(Models.CreateCustomerRequestModel body)
-        {
-            //validating required parameters
-            if (null == body)
-                throw new ArgumentNullException("body", "The parameter \"body\" is a required parameter and cannot be null.");
-
-            //the base uri for api requests
-            string _baseUri = Configuration.GetBaseURI();
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/customers");
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "TangoCardv2NGSDK" },
-                { "accept", "application/json" },
-                { "content-type", "application/json; charset=utf-8" }
-            };
-
-            //append body params
-            var _body = APIHelper.JsonSerialize(body);
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.PostBody(_queryUrl, _headers, _body, Configuration.PlatformName, Configuration.PlatformKey);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return APIHelper.JsonDeserialize<Models.CustomerModel>(_response.Body);
-            }
-            catch (Exception _ex)
-            {
-                throw new APIException("Failed to parse the response: " + _ex.Message, _context);
-            }
-        }
-
-        /// <summary>
-        /// Gets all customers under the platform
-        /// </summary>
-        /// <return>Returns the List<Models.CustomerModel> response from the API call</return>
-        public List<Models.CustomerModel> GetAllCustomers()
-        {
-            Task<List<Models.CustomerModel>> t = GetAllCustomersAsync();
-            APIHelper.RunTaskSynchronously(t);
-            return t.Result;
-        }
-
-        /// <summary>
-        /// Gets all customers under the platform
-        /// </summary>
-        /// <return>Returns the List<Models.CustomerModel> response from the API call</return>
-        public async Task<List<Models.CustomerModel>> GetAllCustomersAsync()
-        {
-            //the base uri for api requests
-            string _baseUri = Configuration.GetBaseURI();
-
-            //prepare query string for API call
-            StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/customers");
-
-
-            //validate and preprocess url
-            string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
-
-            //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
-            {
-                { "user-agent", "TangoCardv2NGSDK" },
-                { "accept", "application/json" }
-            };
-
-            //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Get(_queryUrl,_headers, Configuration.PlatformName, Configuration.PlatformKey);
-
-            //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
-            //handle errors defined at the API level
-            base.ValidateResponse(_response, _context);
-
-            try
-            {
-                return APIHelper.JsonDeserialize<List<Models.CustomerModel>>(_response.Body);
             }
             catch (Exception _ex)
             {

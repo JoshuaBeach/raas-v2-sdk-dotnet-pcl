@@ -22,6 +22,7 @@ namespace TangoCard.Raas.Models
     {
         // These fields hold the values for the public properties.
         private string accountIdentifier;
+        private string accountNumber;
         private string displayName;
         private string currencyCode = "USD";
         private double currentBalance;
@@ -30,7 +31,7 @@ namespace TangoCard.Raas.Models
         private string contactEmail;
 
         /// <summary>
-        /// Account Identifier
+        /// An account identifier
         /// </summary>
         [JsonProperty("accountIdentifier")]
         public string AccountIdentifier 
@@ -47,7 +48,24 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Display Name
+        /// An account number
+        /// </summary>
+        [JsonProperty("accountNumber")]
+        public string AccountNumber 
+        { 
+            get 
+            {
+                return this.accountNumber; 
+            } 
+            set 
+            {
+                this.accountNumber = value;
+                onPropertyChanged("AccountNumber");
+            }
+        }
+
+        /// <summary>
+        /// A display name
         /// </summary>
         [JsonProperty("displayName")]
         public string DisplayName 
@@ -64,7 +82,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Currency Code
+        /// The currency code for the account
         /// </summary>
         [JsonProperty("currencyCode")]
         public string CurrencyCode 
@@ -81,7 +99,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Current Balance
+        /// The current balance of the account
         /// </summary>
         [JsonProperty("currentBalance")]
         public double CurrentBalance 
@@ -98,7 +116,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Date Created
+        /// The date the account was created
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("createdAt")]
@@ -116,7 +134,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Status
+        /// The status of the account
         /// </summary>
         [JsonProperty("status")]
         public string Status 
@@ -133,7 +151,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Contact Email
+        /// The contact email on file for the account
         /// </summary>
         [JsonProperty("contactEmail")]
         public string ContactEmail 

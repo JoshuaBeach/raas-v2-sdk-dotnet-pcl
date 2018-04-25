@@ -30,9 +30,10 @@ namespace TangoCard.Raas.Models
         private string status;
         private DateTime createdDate;
         private DateTime activationDate;
+        private List<Models.FullNameEmailModel> contactInformation;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The customer identifier
         /// </summary>
         [JsonProperty("customerIdentifier")]
         public string CustomerIdentifier 
@@ -49,7 +50,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The account identifier
         /// </summary>
         [JsonProperty("accountIdentifier")]
         public string AccountIdentifier 
@@ -66,7 +67,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The credit card token
         /// </summary>
         [JsonProperty("token")]
         public string Token 
@@ -83,7 +84,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The label/nickname for the credit card
         /// </summary>
         [JsonProperty("label")]
         public string Label 
@@ -100,7 +101,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The last four digits of the credit card number
         /// </summary>
         [JsonProperty("lastFourDigits")]
         public string LastFourDigits 
@@ -117,7 +118,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The credit card's expiration date
         /// </summary>
         [JsonProperty("expirationDate")]
         public string ExpirationDate 
@@ -134,7 +135,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The status of the credit card
         /// </summary>
         [JsonProperty("status")]
         public string Status 
@@ -151,7 +152,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The date the card was added
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("createdDate")]
@@ -169,7 +170,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The date the card will be available for use
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("activationDate")]
@@ -183,6 +184,23 @@ namespace TangoCard.Raas.Models
             {
                 this.activationDate = value;
                 onPropertyChanged("ActivationDate");
+            }
+        }
+
+        /// <summary>
+        /// An optional array of FullNameEmail objects
+        /// </summary>
+        [JsonProperty("contactInformation")]
+        public List<Models.FullNameEmailModel> ContactInformation 
+        { 
+            get 
+            {
+                return this.contactInformation; 
+            } 
+            set 
+            {
+                this.contactInformation = value;
+                onPropertyChanged("ContactInformation");
             }
         }
     }

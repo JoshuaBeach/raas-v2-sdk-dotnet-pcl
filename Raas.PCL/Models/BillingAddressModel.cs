@@ -32,7 +32,7 @@ namespace TangoCard.Raas.Models
         private string addressLine2;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The first name
         /// </summary>
         [JsonProperty("firstName")]
         public string FirstName 
@@ -49,7 +49,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The last name
         /// </summary>
         [JsonProperty("lastName")]
         public string LastName 
@@ -66,7 +66,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The address
         /// </summary>
         [JsonProperty("addressLine1")]
         public string AddressLine1 
@@ -83,7 +83,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The city
         /// </summary>
         [JsonProperty("city")]
         public string City 
@@ -100,7 +100,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The state/province
         /// </summary>
         [JsonProperty("state")]
         public string State 
@@ -117,7 +117,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The postal code
         /// </summary>
         [JsonProperty("postalCode")]
         public string PostalCode 
@@ -134,7 +134,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// 2-letter country code
+        /// The 2-letter country code
         /// </summary>
         [JsonProperty("country")]
         public string Country 
@@ -151,7 +151,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// billing email address
+        /// The billing contact's email address
         /// </summary>
         [JsonProperty("emailAddress")]
         public string EmailAddress 
@@ -168,7 +168,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// An optional second address line
         /// </summary>
         [JsonProperty("addressLine2")]
         public string AddressLine2 

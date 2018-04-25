@@ -26,7 +26,7 @@ namespace TangoCard.Raas.Models
         private string verificationNumber;
 
         /// <summary>
-        /// card number
+        /// The credit card number
         /// </summary>
         [JsonProperty("number")]
         public string Number 
@@ -43,7 +43,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// card expiration date in YYYY-MM format
+        /// The credit card expiration date in YYYY-MM format
         /// </summary>
         [JsonProperty("expiration")]
         public string Expiration 
@@ -60,7 +60,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// 3 or 4 digit card security code on the back of card
+        /// The 3 or 4 digit card security code on the back of card
         /// </summary>
         [JsonProperty("verificationNumber")]
         public string VerificationNumber 

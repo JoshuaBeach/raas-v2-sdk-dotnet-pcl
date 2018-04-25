@@ -30,7 +30,7 @@ namespace TangoCard.Raas.Models
         private int? page;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Account identifier
         /// </summary>
         [JsonProperty("accountIdentifier")]
         public string AccountIdentifier 
@@ -47,7 +47,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Customer identifier
         /// </summary>
         [JsonProperty("customerIdentifier")]
         public string CustomerIdentifier 
@@ -64,7 +64,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// External reference id
         /// </summary>
         [JsonProperty("externalRefID")]
         public string ExternalRefID 
@@ -81,7 +81,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The start date
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("startDate")]
@@ -99,7 +99,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The end date
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("endDate")]
@@ -117,7 +117,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The number of elements per page
         /// </summary>
         [JsonProperty("elementsPerBlock")]
         public int? ElementsPerBlock 
@@ -134,7 +134,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The page number to return
         /// </summary>
         [JsonProperty("page")]
         public int? Page 

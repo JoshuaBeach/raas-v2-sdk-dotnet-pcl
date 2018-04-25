@@ -10,7 +10,7 @@
     <AssemblyName>Raas.PCL</AssemblyName>
     <OutputType>Library</OutputType>
     <OutputPath>bin/DEBUG/</OutputPath>
-    <ProjectGuid>{d8ab54c1-5d7b-4134-ba57-70409dbec2ca}</ProjectGuid>
+    <ProjectGuid>{571df64a-672b-4de6-a93f-ff432983ed45}</ProjectGuid>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <NuGetPackageImportStamp>ee2bb91c</NuGetPackageImportStamp>
@@ -71,47 +71,49 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\GetOrdersInput.cs" />
-    <Compile Include="Models\DepositRequestModel.cs" />
-    <Compile Include="Models\UnregisterCreditCardResponseModel.cs" />
-    <Compile Include="Models\UnregisterCreditCardRequestModel.cs" />
-    <Compile Include="Models\BillingAddressModel.cs" />
-    <Compile Include="Models\NewCreditCardModel.cs" />
-    <Compile Include="Models\CreateCreditCardRequestModel.cs" />
-    <Compile Include="Models\CreditCardModel.cs" />
-    <Compile Include="Models\RaasClientErrorModel.cs" />
-    <Compile Include="Models\PageModel.cs" />
-    <Compile Include="Models\ExchangeRateModel.cs" />
-    <Compile Include="Models\RewardCredentialModel.cs" />
-    <Compile Include="Models\RewardModel.cs" />
+    <Compile Include="Models\OrderSummaryModel.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\ExchangeRateResponseModel.cs" />
     <Compile Include="Models\DepositResponseModel.cs" />
     <Compile Include="Models\ResendOrderResponseModel.cs" />
-    <Compile Include="Models\CreateOrderRequestModel.cs" />
-    <Compile Include="Models\ExchangeRateResponseModel.cs" />
     <Compile Include="Models\AccountSummaryModel.cs" />
-    <Compile Include="Models\CustomerModel.cs" />
-    <Compile Include="Models\AccountModel.cs" />
-    <Compile Include="Models\CreateCustomerRequestModel.cs" />
-    <Compile Include="Models\CreateAccountRequestModel.cs" />
-    <Compile Include="Models\RaasServerErrorModel.cs" />
-    <Compile Include="Models\SystemStatusResponseModel.cs" />
-    <Compile Include="Models\GetOrdersResponseModel.cs" />
-    <Compile Include="Models\CatalogModel.cs" />
-    <Compile Include="Models\BrandModel.cs" />
-    <Compile Include="Models\ItemModel.cs" />
-    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\CurrencyBreakdownModel.cs" />
-    <Compile Include="Models\NameEmailModel.cs" />
+    <Compile Include="Models\RewardModel.cs" />
     <Compile Include="Models\GetDepositResponseModel.cs" />
-    <Compile Include="Exceptions\RaasClientException.cs" />
+    <Compile Include="Models\CreateCreditCardRequestModel.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\BillingAddressModel.cs" />
+    <Compile Include="Models\BrandModel.cs" />
+    <Compile Include="Models\PageModel.cs" />
+    <Compile Include="Models\FullNameEmailModel.cs" />
+    <Compile Include="Models\RaasClientErrorModel.cs" />
+    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="Models\CreateAccountRequestModel.cs" />
+    <Compile Include="Models\NameEmailModel.cs" />
+    <Compile Include="Models\SystemStatusResponseModel.cs" />
+    <Compile Include="Models\RaasServerErrorModel.cs" />
+    <Compile Include="Models\NewCreditCardModel.cs" />
+    <Compile Include="Models\CreateCustomerRequestModel.cs" />
+    <Compile Include="Models\ExchangeRateModel.cs" />
+    <Compile Include="Models\CreditCardModel.cs" />
+    <Compile Include="Models\UnregisterCreditCardRequestModel.cs" />
+    <Compile Include="Models\CreateOrderRequestModel.cs" />
+    <Compile Include="Models\DepositRequestModel.cs" />
+    <Compile Include="Models\GetOrdersResponseModel.cs" />
+    <Compile Include="Models\ItemModel.cs" />
+    <Compile Include="Models\CatalogModel.cs" />
+    <Compile Include="Models\RewardCredentialModel.cs" />
+    <Compile Include="Models\UnregisterCreditCardResponseModel.cs" />
     <Compile Include="Exceptions\RaasGenericException.cs" />
+    <Compile Include="Exceptions\RaasClientException.cs" />
     <Compile Include="Exceptions\RaasServerException.cs" />
-    <Compile Include="Controllers\OrdersController.cs" />
-    <Compile Include="Controllers\AccountsController.cs" />
-    <Compile Include="Controllers\CatalogController.cs" />
-    <Compile Include="Controllers\ExchangeRatesController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
-    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\FundController.cs" />
+    <Compile Include="Controllers\ExchangeRatesController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Http\Client\IHTTPClient.cs" />
     <Compile Include="Http\Client\HTTPClient.cs" />
     <Compile Include="Http\Client\HttpEventHandlers.cs" />

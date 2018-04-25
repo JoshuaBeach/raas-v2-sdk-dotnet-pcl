@@ -27,7 +27,7 @@ namespace TangoCard.Raas.Models
         private string invalidValue;
 
         /// <summary>
-        /// Error Path
+        /// The path to the invalid value
         /// </summary>
         [JsonProperty("path")]
         public string Path 
@@ -44,7 +44,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Error Message
+        /// The error message
         /// </summary>
         [JsonProperty("message")]
         public string Message 
@@ -61,7 +61,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Constraint
+        /// The constraint validated
         /// </summary>
         [JsonProperty("constraint")]
         public string Constraint 
@@ -78,7 +78,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Invalid Value
+        /// The value that was invalid
         /// </summary>
         [JsonProperty("invalidValue")]
         public string InvalidValue 

@@ -27,9 +27,10 @@ namespace TangoCard.Raas.Models
         private string ipAddress;
         private Models.NewCreditCardModel creditCard;
         private Models.BillingAddressModel billingAddress;
+        private List<Models.FullNameEmailModel> contactInformation;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The customer identifier
         /// </summary>
         [JsonProperty("customerIdentifier")]
         public string CustomerIdentifier 
@@ -46,7 +47,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The account identifier
         /// </summary>
         [JsonProperty("accountIdentifier")]
         public string AccountIdentifier 
@@ -63,7 +64,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The credit card's label/nickname
         /// </summary>
         [JsonProperty("label")]
         public string Label 
@@ -80,7 +81,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The IP address of the user registering the card
         /// </summary>
         [JsonProperty("ipAddress")]
         public string IpAddress 
@@ -97,7 +98,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// A NewCreditCard object
         /// </summary>
         [JsonProperty("creditCard")]
         public Models.NewCreditCardModel CreditCard 
@@ -114,7 +115,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// A BillingAddress object
         /// </summary>
         [JsonProperty("billingAddress")]
         public Models.BillingAddressModel BillingAddress 
@@ -127,6 +128,23 @@ namespace TangoCard.Raas.Models
             {
                 this.billingAddress = value;
                 onPropertyChanged("BillingAddress");
+            }
+        }
+
+        /// <summary>
+        /// An optional array of FullNameEmail objects
+        /// </summary>
+        [JsonProperty("contactInformation")]
+        public List<Models.FullNameEmailModel> ContactInformation 
+        { 
+            get 
+            {
+                return this.contactInformation; 
+            } 
+            set 
+            {
+                this.contactInformation = value;
+                onPropertyChanged("ContactInformation");
             }
         }
     }

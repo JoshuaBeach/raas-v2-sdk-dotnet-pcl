@@ -24,7 +24,7 @@ namespace TangoCard.Raas.Models
         private string status;
 
         /// <summary>
-        /// System Status
+        /// The status of the system
         /// </summary>
         [JsonProperty("status")]
         public string Status 

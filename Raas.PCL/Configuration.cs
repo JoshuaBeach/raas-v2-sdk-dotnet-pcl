@@ -9,16 +9,10 @@ namespace TangoCard.Raas
 
         public enum Environments
         {
-            //Sandbox (Fake) Environment
+            //The sandbox environment does not use real money and can be used for testing.
             SANDBOX,
-            //Production (Live) Environment
+            //The production environment uses real money and is for live transactions.
             PRODUCTION,
-            //Tango Card Internal Use Only
-            QA,
-            //Tango Card Internal Use Only
-            GAMMA,
-            //Tango Card Internal Use Only
-            LOCAL,
         }
         public enum Servers
         {
@@ -28,11 +22,11 @@ namespace TangoCard.Raas
         //The current environment being used
         public static Environments Environment = Environments.SANDBOX;
 
-        //RaaS v2 API Platform Name
+        //Platform Name (Provided by Tango Card)
         //TODO: Replace the PlatformName with an appropriate value
         public static string PlatformName = "QAPlatform2";
 
-        //RaaS v2 API Platform Key
+        //Platform Key (Provided by Tango Card)
         //TODO: Replace the PlatformKey with an appropriate value
         public static string PlatformKey = "apYPfT6HNONpDRUj3CLGWYt7gvIHONpDRUYPfT6Hj";
 
@@ -50,24 +44,6 @@ namespace TangoCard.Raas
                     Environments.PRODUCTION,new Dictionary<Servers, string>
                     {
                         { Servers.DEFAULT,"https://api.tangocard.com/raas/v2" },
-                    }
-                },
-                { 
-                    Environments.QA,new Dictionary<Servers, string>
-                    {
-                        { Servers.DEFAULT,"https://qa-api.tangocard.com/raas/v2" },
-                    }
-                },
-                { 
-                    Environments.GAMMA,new Dictionary<Servers, string>
-                    {
-                        { Servers.DEFAULT,"https://gamma-api.tangocard.com/raas/v2" },
-                    }
-                },
-                { 
-                    Environments.LOCAL,new Dictionary<Servers, string>
-                    {
-                        { Servers.DEFAULT,"http://raastango.cc:8080/v2" },
                     }
                 },
             };

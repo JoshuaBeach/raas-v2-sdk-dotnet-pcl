@@ -14,13 +14,13 @@ namespace TangoCard.Raas
     {
 
         /// <summary>
-        /// Singleton access to Orders controller
+        /// Singleton access to Status controller
         /// </summary>
-        public OrdersController Orders
+        public StatusController Status
         {
             get
             {
-                return OrdersController.Instance;
+                return StatusController.Instance;
             }
         }
 
@@ -36,13 +36,24 @@ namespace TangoCard.Raas
         }
 
         /// <summary>
-        /// Singleton access to Catalog controller
+        /// Singleton access to Orders controller
         /// </summary>
-        public CatalogController Catalog
+        public OrdersController Orders
         {
             get
             {
-                return CatalogController.Instance;
+                return OrdersController.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Singleton access to Fund controller
+        /// </summary>
+        public FundController Fund
+        {
+            get
+            {
+                return FundController.Instance;
             }
         }
 
@@ -58,17 +69,6 @@ namespace TangoCard.Raas
         }
 
         /// <summary>
-        /// Singleton access to Status controller
-        /// </summary>
-        public StatusController Status
-        {
-            get
-            {
-                return StatusController.Instance;
-            }
-        }
-
-        /// <summary>
         /// Singleton access to Customers controller
         /// </summary>
         public CustomersController Customers
@@ -80,13 +80,13 @@ namespace TangoCard.Raas
         }
 
         /// <summary>
-        /// Singleton access to Fund controller
+        /// Singleton access to Catalog controller
         /// </summary>
-        public FundController Fund
+        public CatalogController Catalog
         {
             get
             {
-                return FundController.Instance;
+                return CatalogController.Instance;
             }
         }
         /// <summary>

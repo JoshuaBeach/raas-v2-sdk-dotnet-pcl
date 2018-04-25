@@ -34,7 +34,7 @@ namespace TangoCard.Raas.Models
         private List<Models.ItemModel> items;
 
         /// <summary>
-        /// Brand Key
+        /// The brand key
         /// </summary>
         [JsonProperty("brandKey")]
         public string BrandKey 
@@ -51,7 +51,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Brand Name
+        /// The brand name
         /// </summary>
         [JsonProperty("brandName")]
         public string BrandName 
@@ -68,7 +68,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Disclaimer
+        /// The brand's disclaimer
         /// </summary>
         [JsonProperty("disclaimer")]
         public string Disclaimer 
@@ -85,7 +85,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Description
+        /// The brand's description
         /// </summary>
         [JsonProperty("description")]
         public string Description 
@@ -102,7 +102,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Short Description
+        /// The brand's short description
         /// </summary>
         [JsonProperty("shortDescription")]
         public string ShortDescription 
@@ -119,7 +119,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Terms
+        /// The brand's terms
         /// </summary>
         [JsonProperty("terms")]
         public string Terms 
@@ -136,7 +136,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Date Created
+        /// The date the brand was created
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("createdDate")]
@@ -154,7 +154,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Last Updated
+        /// The date the brand was last updated
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("lastUpdateDate")]
@@ -172,7 +172,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Image URLs
+        /// A map of Image URLs
         /// </summary>
         [JsonProperty("imageUrls")]
         public Dictionary<string, string> ImageUrls 
@@ -189,7 +189,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Status
+        /// The brand's status
         /// </summary>
         [JsonProperty("status")]
         public string Status 
@@ -206,7 +206,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Items
+        /// An array of Item objects
         /// </summary>
         [JsonProperty("items")]
         public List<Models.ItemModel> Items 

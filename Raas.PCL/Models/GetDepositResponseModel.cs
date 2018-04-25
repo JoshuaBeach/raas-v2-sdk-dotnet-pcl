@@ -29,7 +29,7 @@ namespace TangoCard.Raas.Models
         private string status;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The deposit amount
         /// </summary>
         [JsonProperty("amount")]
         public double Amount 
@@ -46,7 +46,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The amount charged
         /// </summary>
         [JsonProperty("amountCharged")]
         public double AmountCharged 
@@ -63,7 +63,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The date the deposit was made
         /// </summary>
         [JsonProperty("createdDate")]
         public string CreatedDate 
@@ -80,7 +80,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The fee percentage
         /// </summary>
         [JsonProperty("feePercent")]
         public double FeePercent 
@@ -97,7 +97,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The deposit reference id
         /// </summary>
         [JsonProperty("referenceDepositID")]
         public string ReferenceDepositID 
@@ -114,7 +114,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The deposit's status
         /// </summary>
         [JsonProperty("status")]
         public string Status 

@@ -27,7 +27,7 @@ namespace TangoCard.Raas.Models
         private double baseFx;
 
         /// <summary>
-        /// Last Modified
+        /// When the exchange rate was last updated
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("lastModifiedDate")]
@@ -45,7 +45,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Reward Currency
+        /// The reward currency
         /// </summary>
         [JsonProperty("rewardCurrency")]
         public string RewardCurrency 
@@ -62,7 +62,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Base Currency
+        /// The base currency
         /// </summary>
         [JsonProperty("baseCurrency")]
         public string BaseCurrency 
@@ -79,7 +79,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Exchange Rate
+        /// The exchange rate
         /// </summary>
         [JsonProperty("baseFx")]
         public double BaseFx 
