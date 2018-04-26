@@ -71,7 +71,7 @@ namespace TangoCard.Raas.Controllers
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/exchangerate");
+            _queryBuilder.Append("/exchangerates");
 
 
             //validate and preprocess url

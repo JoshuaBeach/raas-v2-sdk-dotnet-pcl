@@ -39,5 +39,35 @@ namespace TangoCard.Raas
             applyConfiguration();
         }
 
+        /// <summary>
+        /// Tests if we can successfully retrieve exchange rates 
+        /// </summary>
+        [Test]
+        public async Task TestTestRetrieveExchangeRates() 
+        {
+
+            // Perform API call
+            Raas.Models.ExchangeRateResponseModel result = null;
+
+            try
+            {
+                result = await controller.GetExchangeRatesAsync();
+            }
+            catch(APIException) {};
+
+            // Test response code
+            Assert.AreEqual(200, httpCallBackHandler.Response.StatusCode,
+                    "Status should be 200");
+
+            // Test whether the captured response is as we expected
+            Assert.IsNotNull(result, "Result should exist");
+
+            Assert.IsTrue(TestHelper.IsJsonObjectProperSubsetOf(
+                    "{\n	\"disclaimer\": \"Exchange rates are provided here for reference. They are updated at least once a day and may have changed by time of order.\",\n	\"exchangeRates\": [{\n		\"lastModifiedDate\": \"2018-04-19T13:00:14.291\",\n		\"rewardCurrency\": \"EUR\",\n		\"baseCurrency\": \"NZD\",\n		\"baseFx\": 0.59120\n	}, {\n		\"lastModifiedDate\": \"2018-04-19T13:00:14.291\",\n		\"rewardCurrency\": \"USD\",\n		\"baseCurrency\": \"NZD\",\n		\"baseFx\": 0.73130\n	}, {\n		\"lastModifiedDate\": \"2018-04-19T13:00:14.230\",\n		\"rewardCurrency\": \"INR\",\n		\"baseCurrency\": \"AUD\",\n		\"baseFx\": 51.29066\n	}]\n}", 
+                    TestHelper.ConvertStreamToString(httpCallBackHandler.Response.RawBody), 
+                    false, true, false),
+                    "Response body should have matching keys");
+        }
+
     }
 }

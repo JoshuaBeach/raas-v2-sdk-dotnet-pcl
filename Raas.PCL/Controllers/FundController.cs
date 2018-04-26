@@ -194,9 +194,9 @@ namespace TangoCard.Raas.Controllers
         /// </summary>
         /// <param name="body">Required parameter: Example: </param>
         /// <return>Returns the Models.DepositResponseModel response from the API call</return>
-        public Models.DepositResponseModel CreateDeposit(Models.DepositRequestModel body)
+        public Models.DepositResponseModel AddFunds(Models.DepositRequestModel body)
         {
-            Task<Models.DepositResponseModel> t = CreateDepositAsync(body);
+            Task<Models.DepositResponseModel> t = AddFundsAsync(body);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
@@ -206,7 +206,7 @@ namespace TangoCard.Raas.Controllers
         /// </summary>
         /// <param name="body">Required parameter: Example: </param>
         /// <return>Returns the Models.DepositResponseModel response from the API call</return>
-        public async Task<Models.DepositResponseModel> CreateDepositAsync(Models.DepositRequestModel body)
+        public async Task<Models.DepositResponseModel> AddFundsAsync(Models.DepositRequestModel body)
         {
             //validating required parameters
             if (null == body)
@@ -393,9 +393,9 @@ namespace TangoCard.Raas.Controllers
         /// </summary>
         /// <param name="body">Required parameter: A CreateCreditCardRequest object</param>
         /// <return>Returns the Models.CreditCardModel response from the API call</return>
-        public Models.CreditCardModel CreateCreditCard(Models.CreateCreditCardRequestModel body)
+        public Models.CreditCardModel CreateRegisterCreditCard(Models.CreateCreditCardRequestModel body)
         {
-            Task<Models.CreditCardModel> t = CreateCreditCardAsync(body);
+            Task<Models.CreditCardModel> t = CreateRegisterCreditCardAsync(body);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
@@ -405,7 +405,7 @@ namespace TangoCard.Raas.Controllers
         /// </summary>
         /// <param name="body">Required parameter: A CreateCreditCardRequest object</param>
         /// <return>Returns the Models.CreditCardModel response from the API call</return>
-        public async Task<Models.CreditCardModel> CreateCreditCardAsync(Models.CreateCreditCardRequestModel body)
+        public async Task<Models.CreditCardModel> CreateRegisterCreditCardAsync(Models.CreateCreditCardRequestModel body)
         {
             //validating required parameters
             if (null == body)

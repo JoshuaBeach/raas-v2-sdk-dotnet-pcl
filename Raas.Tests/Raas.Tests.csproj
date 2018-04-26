@@ -8,7 +8,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{c4d3b34f-8095-4704-a37a-6b338ac7cc91}</ProjectGuid>
+    <ProjectGuid>{4dcf2c5f-7882-40bd-86ff-90e41e44eab2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TangoCard.Raas</RootNamespace>
@@ -73,7 +73,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="StatusControllerTest.cs" />
+    <Compile Include="AccountsControllerTest.cs" />
+    <Compile Include="OrdersControllerTest.cs" />
+    <Compile Include="FundControllerTest.cs" />
     <Compile Include="ExchangeRatesControllerTest.cs" />
+    <Compile Include="CustomersControllerTest.cs" />
     <Compile Include="CatalogControllerTest.cs" />
     <Compile Include="ControllerTestBase.cs" />
     <Compile Include="Helpers\HttpCallBackEventsHandler.cs" />
@@ -85,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Raas.PCL\Raas.PCL.csproj">
-      <Project>{571df64a-672b-4de6-a93f-ff432983ed45}</Project>
+      <Project>{903bd28c-3dec-46e8-98d3-af4c4c104d33}</Project>
       <Name>Raas.PCL</Name>
     </ProjectReference>
   </ItemGroup>
