@@ -10,7 +10,7 @@
     <AssemblyName>Raas.PCL</AssemblyName>
     <OutputType>Library</OutputType>
     <OutputPath>bin/DEBUG/</OutputPath>
-    <ProjectGuid>{903bd28c-3dec-46e8-98d3-af4c4c104d33}</ProjectGuid>
+    <ProjectGuid>{c295e848-7e4f-4e84-ae05-e0d13a10ce71}</ProjectGuid>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <NuGetPackageImportStamp>ee2bb91c</NuGetPackageImportStamp>

@@ -23,7 +23,7 @@ namespace TangoCard.Raas.Models
         // These fields hold the values for the public properties.
         private double amount;
         private double amountCharged;
-        private string createdDate;
+        private DateTime createdDate;
         private double feePercent;
         private string referenceDepositID;
         private string status;
@@ -65,8 +65,9 @@ namespace TangoCard.Raas.Models
         /// <summary>
         /// The date the deposit was made
         /// </summary>
+        [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("createdDate")]
-        public string CreatedDate 
+        public DateTime CreatedDate 
         { 
             get 
             {

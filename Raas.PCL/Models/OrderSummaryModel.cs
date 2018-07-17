@@ -29,7 +29,7 @@ namespace TangoCard.Raas.Models
         private Models.CurrencyBreakdownModel marginShare;
         private string utid;
         private string rewardName;
-        private string sender;
+        private Models.NameEmailModel sender;
         private Models.NameEmailModel recipient;
         private bool sendEmail;
         private string status;
@@ -176,7 +176,7 @@ namespace TangoCard.Raas.Models
         /// The sender's information
         /// </summary>
         [JsonProperty("sender")]
-        public string Sender 
+        public Models.NameEmailModel Sender 
         { 
             get 
             {
