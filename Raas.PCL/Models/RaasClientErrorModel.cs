@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -23,11 +23,11 @@ namespace TangoCard.Raas.Models
         // These fields hold the values for the public properties.
         private string path;
         private string message;
-        private string constraint;
         private string invalidValue;
+        private string constraint;
 
         /// <summary>
-        /// Error Path
+        /// The path to the invalid value
         /// </summary>
         [JsonProperty("path")]
         public string Path 
@@ -44,7 +44,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Error Message
+        /// The error message
         /// </summary>
         [JsonProperty("message")]
         public string Message 
@@ -61,24 +61,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Constraint
-        /// </summary>
-        [JsonProperty("constraint")]
-        public string Constraint 
-        { 
-            get 
-            {
-                return this.constraint; 
-            } 
-            set 
-            {
-                this.constraint = value;
-                onPropertyChanged("Constraint");
-            }
-        }
-
-        /// <summary>
-        /// Invalid Value
+        /// The value that was invalid
         /// </summary>
         [JsonProperty("invalidValue")]
         public string InvalidValue 
@@ -91,6 +74,23 @@ namespace TangoCard.Raas.Models
             {
                 this.invalidValue = value;
                 onPropertyChanged("InvalidValue");
+            }
+        }
+
+        /// <summary>
+        /// The constraint validated
+        /// </summary>
+        [JsonProperty("constraint")]
+        public string Constraint 
+        { 
+            get 
+            {
+                return this.constraint; 
+            } 
+            set 
+            {
+                this.constraint = value;
+                onPropertyChanged("Constraint");
             }
         }
     }

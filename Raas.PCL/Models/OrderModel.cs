@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -21,27 +21,64 @@ namespace TangoCard.Raas.Models
     public class OrderModel : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string accountIdentifier;
-        private Models.CurrencyBreakdownModel amountCharged;
-        private DateTime createdAt;
-        private string customerIdentifier;
-        private Models.CurrencyBreakdownModel denomination;
         private string referenceOrderID;
-        private Models.RewardModel reward;
-        private string rewardName;
-        private bool sendEmail;
-        private string status;
+        private string customerIdentifier;
+        private string accountIdentifier;
+        private string accountNumber;
+        private Models.CurrencyBreakdownModel amountCharged;
+        private Models.CurrencyBreakdownModel denomination;
         private string utid;
+        private string rewardName;
+        private Models.NameEmailModel sender;
+        private Models.NameEmailModel recipient;
+        private bool sendEmail;
+        private string etid;
+        private string status;
+        private DateTime createdAt;
+        private Models.RewardModel reward;
         private string campaign;
         private string emailSubject;
         private string externalRefID;
         private string message;
         private string notes;
-        private Models.NameEmailModel recipient;
-        private Models.NameEmailModel sender;
+        private Models.CurrencyBreakdownModel marginShare;
 
         /// <summary>
-        /// Account Identifier
+        /// The reference order id
+        /// </summary>
+        [JsonProperty("referenceOrderID")]
+        public string ReferenceOrderID 
+        { 
+            get 
+            {
+                return this.referenceOrderID; 
+            } 
+            set 
+            {
+                this.referenceOrderID = value;
+                onPropertyChanged("ReferenceOrderID");
+            }
+        }
+
+        /// <summary>
+        /// The customer identifier
+        /// </summary>
+        [JsonProperty("customerIdentifier")]
+        public string CustomerIdentifier 
+        { 
+            get 
+            {
+                return this.customerIdentifier; 
+            } 
+            set 
+            {
+                this.customerIdentifier = value;
+                onPropertyChanged("CustomerIdentifier");
+            }
+        }
+
+        /// <summary>
+        /// The account identifier
         /// </summary>
         [JsonProperty("accountIdentifier")]
         public string AccountIdentifier 
@@ -58,7 +95,24 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Amount Charged
+        /// The account number
+        /// </summary>
+        [JsonProperty("accountNumber")]
+        public string AccountNumber 
+        { 
+            get 
+            {
+                return this.accountNumber; 
+            } 
+            set 
+            {
+                this.accountNumber = value;
+                onPropertyChanged("AccountNumber");
+            }
+        }
+
+        /// <summary>
+        /// The order's amount information
         /// </summary>
         [JsonProperty("amountCharged")]
         public Models.CurrencyBreakdownModel AmountCharged 
@@ -75,7 +129,143 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Created At
+        /// Information about the gift card amount
+        /// </summary>
+        [JsonProperty("denomination")]
+        public Models.CurrencyBreakdownModel Denomination 
+        { 
+            get 
+            {
+                return this.denomination; 
+            } 
+            set 
+            {
+                this.denomination = value;
+                onPropertyChanged("Denomination");
+            }
+        }
+
+        /// <summary>
+        /// The UTID
+        /// </summary>
+        [JsonProperty("utid")]
+        public string Utid 
+        { 
+            get 
+            {
+                return this.utid; 
+            } 
+            set 
+            {
+                this.utid = value;
+                onPropertyChanged("Utid");
+            }
+        }
+
+        /// <summary>
+        /// The reward name
+        /// </summary>
+        [JsonProperty("rewardName")]
+        public string RewardName 
+        { 
+            get 
+            {
+                return this.rewardName; 
+            } 
+            set 
+            {
+                this.rewardName = value;
+                onPropertyChanged("RewardName");
+            }
+        }
+
+        /// <summary>
+        /// The sender data
+        /// </summary>
+        [JsonProperty("sender")]
+        public Models.NameEmailModel Sender 
+        { 
+            get 
+            {
+                return this.sender; 
+            } 
+            set 
+            {
+                this.sender = value;
+                onPropertyChanged("Sender");
+            }
+        }
+
+        /// <summary>
+        /// The recipient data
+        /// </summary>
+        [JsonProperty("recipient")]
+        public Models.NameEmailModel Recipient 
+        { 
+            get 
+            {
+                return this.recipient; 
+            } 
+            set 
+            {
+                this.recipient = value;
+                onPropertyChanged("Recipient");
+            }
+        }
+
+        /// <summary>
+        /// Indicates if an email was sent to the recipient
+        /// </summary>
+        [JsonProperty("sendEmail")]
+        public bool SendEmail 
+        { 
+            get 
+            {
+                return this.sendEmail; 
+            } 
+            set 
+            {
+                this.sendEmail = value;
+                onPropertyChanged("SendEmail");
+            }
+        }
+
+        /// <summary>
+        /// The email template id
+        /// </summary>
+        [JsonProperty("etid")]
+        public string Etid 
+        { 
+            get 
+            {
+                return this.etid; 
+            } 
+            set 
+            {
+                this.etid = value;
+                onPropertyChanged("Etid");
+            }
+        }
+
+        /// <summary>
+        /// The order's status
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status 
+        { 
+            get 
+            {
+                return this.status; 
+            } 
+            set 
+            {
+                this.status = value;
+                onPropertyChanged("Status");
+            }
+        }
+
+        /// <summary>
+        /// When the order was placed
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("createdAt")]
@@ -93,58 +283,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Customer Identifier
-        /// </summary>
-        [JsonProperty("customerIdentifier")]
-        public string CustomerIdentifier 
-        { 
-            get 
-            {
-                return this.customerIdentifier; 
-            } 
-            set 
-            {
-                this.customerIdentifier = value;
-                onPropertyChanged("CustomerIdentifier");
-            }
-        }
-
-        /// <summary>
-        /// Denomination
-        /// </summary>
-        [JsonProperty("denomination")]
-        public Models.CurrencyBreakdownModel Denomination 
-        { 
-            get 
-            {
-                return this.denomination; 
-            } 
-            set 
-            {
-                this.denomination = value;
-                onPropertyChanged("Denomination");
-            }
-        }
-
-        /// <summary>
-        /// Reference Order ID
-        /// </summary>
-        [JsonProperty("referenceOrderID")]
-        public string ReferenceOrderID 
-        { 
-            get 
-            {
-                return this.referenceOrderID; 
-            } 
-            set 
-            {
-                this.referenceOrderID = value;
-                onPropertyChanged("ReferenceOrderID");
-            }
-        }
-
-        /// <summary>
-        /// Reward
+        /// Contains the reward credentials
         /// </summary>
         [JsonProperty("reward")]
         public Models.RewardModel Reward 
@@ -161,75 +300,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Reward Name
-        /// </summary>
-        [JsonProperty("rewardName")]
-        public string RewardName 
-        { 
-            get 
-            {
-                return this.rewardName; 
-            } 
-            set 
-            {
-                this.rewardName = value;
-                onPropertyChanged("RewardName");
-            }
-        }
-
-        /// <summary>
-        /// Send Email
-        /// </summary>
-        [JsonProperty("sendEmail")]
-        public bool SendEmail 
-        { 
-            get 
-            {
-                return this.sendEmail; 
-            } 
-            set 
-            {
-                this.sendEmail = value;
-                onPropertyChanged("SendEmail");
-            }
-        }
-
-        /// <summary>
-        /// Status
-        /// </summary>
-        [JsonProperty("status")]
-        public string Status 
-        { 
-            get 
-            {
-                return this.status; 
-            } 
-            set 
-            {
-                this.status = value;
-                onPropertyChanged("Status");
-            }
-        }
-
-        /// <summary>
-        /// UTID
-        /// </summary>
-        [JsonProperty("utid")]
-        public string Utid 
-        { 
-            get 
-            {
-                return this.utid; 
-            } 
-            set 
-            {
-                this.utid = value;
-                onPropertyChanged("Utid");
-            }
-        }
-
-        /// <summary>
-        /// Campaign
+        /// An optional campaign identifier
         /// </summary>
         [JsonProperty("campaign")]
         public string Campaign 
@@ -246,7 +317,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Email Subject
+        /// The subject of the email
         /// </summary>
         [JsonProperty("emailSubject")]
         public string EmailSubject 
@@ -263,7 +334,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// External Reference ID
+        /// An external reference id
         /// </summary>
         [JsonProperty("externalRefID")]
         public string ExternalRefID 
@@ -280,7 +351,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Message
+        /// A message included with the email
         /// </summary>
         [JsonProperty("message")]
         public string Message 
@@ -297,7 +368,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Notes
+        /// Optional customer notes
         /// </summary>
         [JsonProperty("notes")]
         public string Notes 
@@ -314,36 +385,19 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Recipient
+        /// Margin share information
         /// </summary>
-        [JsonProperty("recipient")]
-        public Models.NameEmailModel Recipient 
+        [JsonProperty("marginShare")]
+        public Models.CurrencyBreakdownModel MarginShare 
         { 
             get 
             {
-                return this.recipient; 
+                return this.marginShare; 
             } 
             set 
             {
-                this.recipient = value;
-                onPropertyChanged("Recipient");
-            }
-        }
-
-        /// <summary>
-        /// Sender
-        /// </summary>
-        [JsonProperty("sender")]
-        public Models.NameEmailModel Sender 
-        { 
-            get 
-            {
-                return this.sender; 
-            } 
-            set 
-            {
-                this.sender = value;
-                onPropertyChanged("Sender");
+                this.marginShare = value;
+                onPropertyChanged("MarginShare");
             }
         }
     }

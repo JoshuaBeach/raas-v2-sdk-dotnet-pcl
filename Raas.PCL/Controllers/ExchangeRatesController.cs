@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.Collections.Generic;
@@ -71,7 +71,7 @@ namespace TangoCard.Raas.Controllers
 
             //prepare query string for API call
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
-            _queryBuilder.Append("/exchangerate");
+            _queryBuilder.Append("/exchangerates");
 
 
             //validate and preprocess url
@@ -80,7 +80,7 @@ namespace TangoCard.Raas.Controllers
             //append request with appropriate headers and parameters
             var _headers = new Dictionary<string,string>()
             {
-                { "user-agent", "TangoCardv2NGSDK" },
+                { "user-agent", "V2NGSDK" },
                 { "accept", "application/json" }
             };
 
@@ -90,6 +90,11 @@ namespace TangoCard.Raas.Controllers
             //invoke request and get response
             HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
             HttpContext _context = new HttpContext(_request,_response);
+
+            //Error handling using HTTP status codes
+            if ((_response.StatusCode < 200) || (_response.StatusCode > 208)) //[200,208] = HTTP OK
+                throw new RaasGenericException(@"API Error", _context);
+
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
 

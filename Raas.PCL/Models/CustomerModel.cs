@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -28,7 +28,7 @@ namespace TangoCard.Raas.Models
         private List<Models.AccountSummaryModel> accounts;
 
         /// <summary>
-        /// Customer Identifier
+        /// The customer identifier
         /// </summary>
         [JsonProperty("customerIdentifier")]
         public string CustomerIdentifier 
@@ -45,7 +45,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Display Name
+        /// The display name
         /// </summary>
         [JsonProperty("displayName")]
         public string DisplayName 
@@ -62,7 +62,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Status
+        /// The status of the customer
         /// </summary>
         [JsonProperty("status")]
         public string Status 
@@ -79,7 +79,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Date Created
+        /// The date the customer was created
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("createdAt")]
@@ -97,7 +97,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Accounts
+        /// An array of AccountSummary objects
         /// </summary>
         [JsonProperty("accounts")]
         public List<Models.AccountSummaryModel> Accounts 

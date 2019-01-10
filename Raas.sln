@@ -1,9 +1,10 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raas.PCL", "Raas.PCL/Raas.PCL.csproj", "{d8ab54c1-5d7b-4134-ba57-70409dbec2ca}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raas.PCL", "Raas.PCL/Raas.PCL.csproj", "{5162f8e9-d336-4e81-8b97-9994f3c8b21a}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raas.Tests", "Raas.Tests/Raas.Tests.csproj", "{ac66f82f-7956-4702-9d5c-6d956cc0463a}"
 EndProject
 Global
     GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +12,14 @@ Global
         Release|Any CPU = Release|Any CPU
     EndGlobalSection
     GlobalSection(ProjectConfigurationPlatforms) = postSolution
-        {d8ab54c1-5d7b-4134-ba57-70409dbec2ca}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-        {d8ab54c1-5d7b-4134-ba57-70409dbec2ca}.Debug|Any CPU.Build.0 = Debug|Any CPU
-        {d8ab54c1-5d7b-4134-ba57-70409dbec2ca}.Release|Any CPU.ActiveCfg = Release|Any CPU
-        {d8ab54c1-5d7b-4134-ba57-70409dbec2ca}.Release|Any CPU.Build.0 = Release|Any CPU
+        {5162f8e9-d336-4e81-8b97-9994f3c8b21a}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {5162f8e9-d336-4e81-8b97-9994f3c8b21a}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {5162f8e9-d336-4e81-8b97-9994f3c8b21a}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {5162f8e9-d336-4e81-8b97-9994f3c8b21a}.Release|Any CPU.Build.0 = Release|Any CPU
+        {ac66f82f-7956-4702-9d5c-6d956cc0463a}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {ac66f82f-7956-4702-9d5c-6d956cc0463a}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {ac66f82f-7956-4702-9d5c-6d956cc0463a}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {ac66f82f-7956-4702-9d5c-6d956cc0463a}.Release|Any CPU.Build.0 = Release|Any CPU
     EndGlobalSection
     GlobalSection(SolutionProperties) = preSolution
         HideSolutionNode = FALSE

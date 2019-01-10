@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -25,7 +25,7 @@ namespace TangoCard.Raas.Models
         private int code;
 
         /// <summary>
-        /// Error Message
+        /// The error message
         /// </summary>
         [JsonProperty("message")]
         public string Message 
@@ -42,7 +42,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Error Code
+        /// The RaaS error code
         /// </summary>
         [JsonProperty("code")]
         public int Code 

@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -24,7 +24,7 @@ namespace TangoCard.Raas.Models
         private string status;
 
         /// <summary>
-        /// System Status
+        /// The status of the system
         /// </summary>
         [JsonProperty("status")]
         public string Status 

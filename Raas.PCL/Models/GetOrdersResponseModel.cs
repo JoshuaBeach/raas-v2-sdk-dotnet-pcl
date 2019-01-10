@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -22,7 +22,7 @@ namespace TangoCard.Raas.Models
     {
         // These fields hold the values for the public properties.
         private Models.PageModel page;
-        private List<Models.OrderModel> orders;
+        private List<Models.OrderSummaryModel> orders;
 
         /// <summary>
         /// Pagination information
@@ -45,7 +45,7 @@ namespace TangoCard.Raas.Models
         /// An array of orders
         /// </summary>
         [JsonProperty("orders")]
-        public List<Models.OrderModel> Orders 
+        public List<Models.OrderSummaryModel> Orders 
         { 
             get 
             {

@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using TangoCard.Raas.Controllers;
@@ -14,13 +14,13 @@ namespace TangoCard.Raas
     {
 
         /// <summary>
-        /// Singleton access to Orders controller
+        /// Singleton access to Status controller
         /// </summary>
-        public OrdersController Orders
+        public StatusController Status
         {
             get
             {
-                return OrdersController.Instance;
+                return StatusController.Instance;
             }
         }
 
@@ -36,13 +36,13 @@ namespace TangoCard.Raas
         }
 
         /// <summary>
-        /// Singleton access to Catalog controller
+        /// Singleton access to Fund controller
         /// </summary>
-        public CatalogController Catalog
+        public FundController Fund
         {
             get
             {
-                return CatalogController.Instance;
+                return FundController.Instance;
             }
         }
 
@@ -58,13 +58,13 @@ namespace TangoCard.Raas
         }
 
         /// <summary>
-        /// Singleton access to Status controller
+        /// Singleton access to Orders controller
         /// </summary>
-        public StatusController Status
+        public OrdersController Orders
         {
             get
             {
-                return StatusController.Instance;
+                return OrdersController.Instance;
             }
         }
 
@@ -80,13 +80,13 @@ namespace TangoCard.Raas
         }
 
         /// <summary>
-        /// Singleton access to Fund controller
+        /// Singleton access to Catalog controller
         /// </summary>
-        public FundController Fund
+        public CatalogController Catalog
         {
             get
             {
-                return FundController.Instance;
+                return CatalogController.Instance;
             }
         }
         /// <summary>

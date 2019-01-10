@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -24,9 +24,10 @@ namespace TangoCard.Raas.Models
         private string label;
         private string mvalue;
         private string type;
+        private string credentialType;
 
         /// <summary>
-        /// Credential Label
+        /// The label of the credential
         /// </summary>
         [JsonProperty("label")]
         public string Label 
@@ -43,7 +44,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Credential Value
+        /// The actual credential
         /// </summary>
         [JsonProperty("value")]
         public string Value 
@@ -60,7 +61,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Credential Type
+        /// The type of the credential
         /// </summary>
         [JsonProperty("type")]
         public string Type 
@@ -73,6 +74,23 @@ namespace TangoCard.Raas.Models
             {
                 this.type = value;
                 onPropertyChanged("Type");
+            }
+        }
+
+        /// <summary>
+        /// The type of the credential
+        /// </summary>
+        [JsonProperty("credentialType")]
+        public string CredentialType 
+        { 
+            get 
+            {
+                return this.credentialType; 
+            } 
+            set 
+            {
+                this.credentialType = value;
+                onPropertyChanged("CredentialType");
             }
         }
     }
