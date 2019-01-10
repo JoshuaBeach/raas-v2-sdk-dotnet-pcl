@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -24,15 +24,15 @@ namespace TangoCard.Raas.Models
         private string firstName;
         private string lastName;
         private string addressLine1;
+        private string addressLine2;
         private string city;
         private string state;
         private string postalCode;
         private string country;
         private string emailAddress;
-        private string addressLine2;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The first name
         /// </summary>
         [JsonProperty("firstName")]
         public string FirstName 
@@ -49,7 +49,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The last name
         /// </summary>
         [JsonProperty("lastName")]
         public string LastName 
@@ -66,7 +66,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The address
         /// </summary>
         [JsonProperty("addressLine1")]
         public string AddressLine1 
@@ -83,7 +83,24 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// An optional second address line
+        /// </summary>
+        [JsonProperty("addressLine2")]
+        public string AddressLine2 
+        { 
+            get 
+            {
+                return this.addressLine2; 
+            } 
+            set 
+            {
+                this.addressLine2 = value;
+                onPropertyChanged("AddressLine2");
+            }
+        }
+
+        /// <summary>
+        /// The city
         /// </summary>
         [JsonProperty("city")]
         public string City 
@@ -100,7 +117,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The state/province
         /// </summary>
         [JsonProperty("state")]
         public string State 
@@ -117,7 +134,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The postal code
         /// </summary>
         [JsonProperty("postalCode")]
         public string PostalCode 
@@ -134,7 +151,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// 2-letter country code
+        /// The 2-letter country code
         /// </summary>
         [JsonProperty("country")]
         public string Country 
@@ -151,7 +168,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// billing email address
+        /// The billing contact's email address
         /// </summary>
         [JsonProperty("emailAddress")]
         public string EmailAddress 
@@ -164,23 +181,6 @@ namespace TangoCard.Raas.Models
             {
                 this.emailAddress = value;
                 onPropertyChanged("EmailAddress");
-            }
-        }
-
-        /// <summary>
-        /// TODO: Write general description for this method
-        /// </summary>
-        [JsonProperty("addressLine2")]
-        public string AddressLine2 
-        { 
-            get 
-            {
-                return this.addressLine2; 
-            } 
-            set 
-            {
-                this.addressLine2 = value;
-                onPropertyChanged("AddressLine2");
             }
         }
     }

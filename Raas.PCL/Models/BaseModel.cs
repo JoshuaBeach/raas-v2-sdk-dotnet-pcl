@@ -1,8 +1,9 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,7 @@ namespace TangoCard.Raas.Models
         /// Raises event when a property is changed
         /// </summary>
         /// <param name="propertyName">Name of the changed property</param>
-        protected void onPropertyChanged(String propertyName)
+        protected void onPropertyChanged(System.String propertyName)
         {
             if (PropertyChanged != null)
             {

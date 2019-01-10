@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -27,15 +27,15 @@ namespace TangoCard.Raas.Models
         private string status;
         private string valueType;
         private string rewardType;
-        private DateTime createdDate;
-        private DateTime lastUpdateDate;
-        private List<string> countries;
         private double? minValue;
         private double? maxValue;
         private double? faceValue;
+        private DateTime createdDate;
+        private DateTime lastUpdateDate;
+        private List<string> countries;
 
         /// <summary>
-        /// UTID
+        /// The UTID
         /// </summary>
         [JsonProperty("utid")]
         public string Utid 
@@ -52,7 +52,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Reward Name
+        /// The reward name
         /// </summary>
         [JsonProperty("rewardName")]
         public string RewardName 
@@ -69,7 +69,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Currency Code
+        /// The currency code
         /// </summary>
         [JsonProperty("currencyCode")]
         public string CurrencyCode 
@@ -86,7 +86,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Status
+        /// The item's status
         /// </summary>
         [JsonProperty("status")]
         public string Status 
@@ -103,7 +103,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Value Type (fixed/variable)
+        /// The item's value type (VARIABLE_VALUE or FIXED_VALUE)
         /// </summary>
         [JsonProperty("valueType")]
         public string ValueType 
@@ -120,7 +120,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Reward Type
+        /// The reward type
         /// </summary>
         [JsonProperty("rewardType")]
         public string RewardType 
@@ -137,7 +137,58 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Date Created
+        /// The minimum orderable value (for variable value items)
+        /// </summary>
+        [JsonProperty("minValue")]
+        public double? MinValue 
+        { 
+            get 
+            {
+                return this.minValue; 
+            } 
+            set 
+            {
+                this.minValue = value;
+                onPropertyChanged("MinValue");
+            }
+        }
+
+        /// <summary>
+        /// The maximum orderable value (for variable value items)
+        /// </summary>
+        [JsonProperty("maxValue")]
+        public double? MaxValue 
+        { 
+            get 
+            {
+                return this.maxValue; 
+            } 
+            set 
+            {
+                this.maxValue = value;
+                onPropertyChanged("MaxValue");
+            }
+        }
+
+        /// <summary>
+        /// The face value of the gift card
+        /// </summary>
+        [JsonProperty("faceValue")]
+        public double? FaceValue 
+        { 
+            get 
+            {
+                return this.faceValue; 
+            } 
+            set 
+            {
+                this.faceValue = value;
+                onPropertyChanged("FaceValue");
+            }
+        }
+
+        /// <summary>
+        /// The date the item was created
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("createdDate")]
@@ -155,7 +206,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Last Updated
+        /// The date the item was last updated
         /// </summary>
         [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("lastUpdateDate")]
@@ -173,7 +224,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Countries
+        /// The countries this item is valid in
         /// </summary>
         [JsonProperty("countries")]
         public List<string> Countries 
@@ -186,57 +237,6 @@ namespace TangoCard.Raas.Models
             {
                 this.countries = value;
                 onPropertyChanged("Countries");
-            }
-        }
-
-        /// <summary>
-        /// Minimum Value (for variable value items)
-        /// </summary>
-        [JsonProperty("minValue")]
-        public double? MinValue 
-        { 
-            get 
-            {
-                return this.minValue; 
-            } 
-            set 
-            {
-                this.minValue = value;
-                onPropertyChanged("MinValue");
-            }
-        }
-
-        /// <summary>
-        /// Maximum Value (for variable value items)
-        /// </summary>
-        [JsonProperty("maxValue")]
-        public double? MaxValue 
-        { 
-            get 
-            {
-                return this.maxValue; 
-            } 
-            set 
-            {
-                this.maxValue = value;
-                onPropertyChanged("MaxValue");
-            }
-        }
-
-        /// <summary>
-        /// Face Value
-        /// </summary>
-        [JsonProperty("faceValue")]
-        public double? FaceValue 
-        { 
-            get 
-            {
-                return this.faceValue; 
-            } 
-            set 
-            {
-                this.faceValue = value;
-                onPropertyChanged("FaceValue");
             }
         }
     }

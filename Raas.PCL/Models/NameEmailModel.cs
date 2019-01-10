@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -26,7 +26,7 @@ namespace TangoCard.Raas.Models
         private string lastName;
 
         /// <summary>
-        /// Email Address
+        /// An email address
         /// </summary>
         [JsonProperty("email")]
         public string Email 
@@ -43,7 +43,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// First Name
+        /// A first name
         /// </summary>
         [JsonProperty("firstName")]
         public string FirstName 
@@ -60,7 +60,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Last Name
+        /// A last name
         /// </summary>
         [JsonProperty("lastName")]
         public string LastName 

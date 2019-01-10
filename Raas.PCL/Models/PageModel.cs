@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -27,7 +27,7 @@ namespace TangoCard.Raas.Models
         private int totalCount;
 
         /// <summary>
-        /// Page Number
+        /// The page number
         /// </summary>
         [JsonProperty("number")]
         public int Number 
@@ -44,7 +44,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Elements per page
+        /// The number of elements per page
         /// </summary>
         [JsonProperty("elementsPerBlock")]
         public int ElementsPerBlock 
@@ -61,7 +61,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Result Count
+        /// The number of results returned
         /// </summary>
         [JsonProperty("resultCount")]
         public int ResultCount 
@@ -78,7 +78,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Total Count
+        /// The total number of results
         /// </summary>
         [JsonProperty("totalCount")]
         public int TotalCount 

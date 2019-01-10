@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -23,13 +23,13 @@ namespace TangoCard.Raas.Models
         // These fields hold the values for the public properties.
         private double amount;
         private double amountCharged;
-        private string createdDate;
+        private DateTime createdDate;
         private double feePercent;
         private string referenceDepositID;
         private string status;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The deposit amount
         /// </summary>
         [JsonProperty("amount")]
         public double Amount 
@@ -46,7 +46,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The amount charged
         /// </summary>
         [JsonProperty("amountCharged")]
         public double AmountCharged 
@@ -63,10 +63,11 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The date the deposit was made
         /// </summary>
+        [JsonConverter(typeof(IsoDateTimeConverter))]
         [JsonProperty("createdDate")]
-        public string CreatedDate 
+        public DateTime CreatedDate 
         { 
             get 
             {
@@ -80,7 +81,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The fee percentage
         /// </summary>
         [JsonProperty("feePercent")]
         public double FeePercent 
@@ -97,7 +98,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The deposit reference id
         /// </summary>
         [JsonProperty("referenceDepositID")]
         public string ReferenceDepositID 
@@ -114,7 +115,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// The deposit's status
         /// </summary>
         [JsonProperty("status")]
         public string Status 

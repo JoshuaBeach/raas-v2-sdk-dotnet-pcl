@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using TangoCard.Raas;
@@ -28,7 +28,7 @@ namespace TangoCard.Raas.Controllers
                     {
                         clientInstance = new HTTPClient()
 ;
-                        clientInstance.setTimeout(TimeSpan.FromMilliseconds(15000));
+                        clientInstance.setTimeout(TimeSpan.FromMilliseconds(60000));
                     }
                     return clientInstance;
                 }

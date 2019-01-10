@@ -1,7 +1,7 @@
 /*
  * Raas.PCL
  *
- * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io )
+ * This file was automatically generated for Tango Card, Inc. by APIMATIC v2.0 ( https://apimatic.io ).
  */
 using System;
 using System.IO;
@@ -23,19 +23,20 @@ namespace TangoCard.Raas.Models
         // These fields hold the values for the public properties.
         private string accountIdentifier;
         private double amount;
-        private string customerIdentifier;
-        private bool sendEmail;
-        private string utid;
         private string campaign;
+        private string customerIdentifier;
         private string emailSubject;
         private string externalRefID;
         private string message;
         private Models.NameEmailModel recipient;
+        private bool sendEmail;
         private Models.NameEmailModel sender;
+        private string utid;
         private string notes;
+        private string etid;
 
         /// <summary>
-        /// Account Identifier
+        /// The account identifier
         /// </summary>
         [JsonProperty("accountIdentifier")]
         public string AccountIdentifier 
@@ -52,7 +53,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Amount
+        /// The order amount
         /// </summary>
         [JsonProperty("amount")]
         public double Amount 
@@ -69,58 +70,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Customer Identifier
-        /// </summary>
-        [JsonProperty("customerIdentifier")]
-        public string CustomerIdentifier 
-        { 
-            get 
-            {
-                return this.customerIdentifier; 
-            } 
-            set 
-            {
-                this.customerIdentifier = value;
-                onPropertyChanged("CustomerIdentifier");
-            }
-        }
-
-        /// <summary>
-        /// Send Email
-        /// </summary>
-        [JsonProperty("sendEmail")]
-        public bool SendEmail 
-        { 
-            get 
-            {
-                return this.sendEmail; 
-            } 
-            set 
-            {
-                this.sendEmail = value;
-                onPropertyChanged("SendEmail");
-            }
-        }
-
-        /// <summary>
-        /// UTID
-        /// </summary>
-        [JsonProperty("utid")]
-        public string Utid 
-        { 
-            get 
-            {
-                return this.utid; 
-            } 
-            set 
-            {
-                this.utid = value;
-                onPropertyChanged("Utid");
-            }
-        }
-
-        /// <summary>
-        /// Campaign
+        /// An optional campaign identifier
         /// </summary>
         [JsonProperty("campaign")]
         public string Campaign 
@@ -137,7 +87,24 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Email Subject
+        /// The customer identifier
+        /// </summary>
+        [JsonProperty("customerIdentifier")]
+        public string CustomerIdentifier 
+        { 
+            get 
+            {
+                return this.customerIdentifier; 
+            } 
+            set 
+            {
+                this.customerIdentifier = value;
+                onPropertyChanged("CustomerIdentifier");
+            }
+        }
+
+        /// <summary>
+        /// The subject of the gift email
         /// </summary>
         [JsonProperty("emailSubject")]
         public string EmailSubject 
@@ -154,7 +121,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// External Reference ID
+        /// An optional external reference id
         /// </summary>
         [JsonProperty("externalRefID")]
         public string ExternalRefID 
@@ -171,7 +138,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Email Message
+        /// The gift message in the email
         /// </summary>
         [JsonProperty("message")]
         public string Message 
@@ -188,7 +155,7 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Recipient
+        /// The recipient's information
         /// </summary>
         [JsonProperty("recipient")]
         public Models.NameEmailModel Recipient 
@@ -205,7 +172,24 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Sender
+        /// Indicates whether we should deliver this reward via email
+        /// </summary>
+        [JsonProperty("sendEmail")]
+        public bool SendEmail 
+        { 
+            get 
+            {
+                return this.sendEmail; 
+            } 
+            set 
+            {
+                this.sendEmail = value;
+                onPropertyChanged("SendEmail");
+            }
+        }
+
+        /// <summary>
+        /// Optional sender information
         /// </summary>
         [JsonProperty("sender")]
         public Models.NameEmailModel Sender 
@@ -222,7 +206,24 @@ namespace TangoCard.Raas.Models
         }
 
         /// <summary>
-        /// Notes
+        /// The UTID
+        /// </summary>
+        [JsonProperty("utid")]
+        public string Utid 
+        { 
+            get 
+            {
+                return this.utid; 
+            } 
+            set 
+            {
+                this.utid = value;
+                onPropertyChanged("Utid");
+            }
+        }
+
+        /// <summary>
+        /// Optional notes (not displayed to customer)
         /// </summary>
         [JsonProperty("notes")]
         public string Notes 
@@ -235,6 +236,23 @@ namespace TangoCard.Raas.Models
             {
                 this.notes = value;
                 onPropertyChanged("Notes");
+            }
+        }
+
+        /// <summary>
+        /// The email template identifier
+        /// </summary>
+        [JsonProperty("etid")]
+        public string Etid 
+        { 
+            get 
+            {
+                return this.etid; 
+            } 
+            set 
+            {
+                this.etid = value;
+                onPropertyChanged("Etid");
             }
         }
     }
